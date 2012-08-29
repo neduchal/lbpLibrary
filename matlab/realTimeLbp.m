@@ -1,7 +1,7 @@
 function histogram = realTimeLbp(img)
-% Funkce vytvoøí lbp reprezentaci obrázku pøedaného v parametru img a vrací
-% histogram tohoto obrázku
-% Volání : histogram = imageToLbpR(img)
+% Funkce vytvorí lbp reprezentaci obrazku predaneho v parametru img a vraci
+% histogram tohoto obrazku
+% Volani : histogram = imageToLbpR(img)
 
 pdata = libpointer('int32Ptr',img);
 res = int32(1:256);

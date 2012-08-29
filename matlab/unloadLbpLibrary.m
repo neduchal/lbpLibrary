@@ -1,5 +1,5 @@
 function unloadLbpLibrary
-% Funkce smaže referenci na knihovnu lbp.dll
-% Volání : unloadLbpLibrary
+% Funkce smaze referenci na knihovnu lbp.dll/liblbp.so
+% Volani : unloadLbpLibrary
 
 unloadlibrary('lbp')

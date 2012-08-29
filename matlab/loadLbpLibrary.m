@@ -1,5 +1,5 @@
 function loadLbpLibrary
-% Funkce naète knihovnu lbp.dll
-% Volání : loadLbpLibrary
+% Funkce nacte knihovnu lbp.dll
+% Volani : loadLbpLibrary
 
 loadlibrary('lbp.dll','lbp.h')

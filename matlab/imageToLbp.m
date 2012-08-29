@@ -1,7 +1,7 @@
 function imgOut = imageToLbp(imgIn, type, radius, samples)
-% Funkce vytvoøí lbp reprezentaci obrázku pøedaného v parametru img a vrací
-% obrázek v LBP reprezentaci
-% Volání : imgOut = imageToLbp(imgIn, type, radius, samples)
+% Funkce vytvori lbp reprezentaci obrazku predaneho v parametru img a vraci
+% obrazek v LBP reprezentaci
+% Volani : imgOut = imageToLbp(imgIn, type, radius, samples)
 % Type : 1 - klasicke LBP,2 - uniform, 3 - 5 RotMin 8 - 32 bit
 
 type = type + 15;
