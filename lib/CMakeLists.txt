@@ -25,26 +25,20 @@ SET(Libraries ${ITK_LIBRARIES})
 file(GLOB headers *.h)
 file(GLOB templates *.txx)
 
-# Doplnit programy TEST , MAKELBP , COMPARE 
-# TEST - vyzkouší vsechny vlastnosti knihovny s podrobnym vypisem
-# MAKELBP - vytvori LBP reprezentaci zdrojoveho obrazu a ulozi ji 
-#           pod zadanym nazvem. (moznost vybrat vlastnosti a typ LBP)
-# COMPARE - porovna 2 LBP reprezentace a spocte jejich podobnost (vzdalenost)
-
 # Vytvoření spustitelného souboru test
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+#IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 ADD_library(lbp SHARED lbp.c lbp.h lbpCxx.cxx lbpCxx.h  	          
   	                 ${headers}
 	                 ${templates}               
               )
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+#ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-ADD_library(lbp SHARED lbpLinux.c lbpLinux.h lbpCxx.cxx lbpCxx.h  	          
-  	                 ${headers}
-	                 ${templates}               
-              )
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+#IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+#ADD_library(lbp SHARED lbpLinux.c lbpLinux.h lbpCxx.cxx lbpCxx.h  	          
+#  	                 ${headers}
+#	                 ${templates}               
+#              )
+#ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 ADD_EXECUTABLE(computeLbp computeLbp.cxx 
   	                 ${headers}

@@ -18,7 +18,7 @@
 /* ------------------------------------------------------------------------- */
 
  /** imageToLbpCxx(sizeX, sizeY, data, type, radius, samples) */
-__declspec(dllexport) double* imageToLbp(int sizeX, int sizeY,
+WINDLLMSG  double* imageToLbp(int sizeX, int sizeY,
   double * data,unsigned int type,unsigned int radius,unsigned int samples)
 {
   // Zavolani funkce pro prevod do LBP
@@ -29,7 +29,7 @@ __declspec(dllexport) double* imageToLbp(int sizeX, int sizeY,
 /* ------------------------------------------------------------------------- */
 
 /** RealTimeLbp(rows, columns, data, result) */
-__declspec(dllexport) int* realTimeLbp(int rows, int columns, const int* data,
+WINDLLMSG  int* realTimeLbp(int rows, int columns, const int* data,
   int* result)
 {
   // Zavolani funkce pro prevod do (realtime) LBP

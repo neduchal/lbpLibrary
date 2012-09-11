@@ -31,11 +31,11 @@
 /* Definice typu a pomocnych konstant */
 #define MAX_SAMPLES             16
 #define MAX_RADIUS               4
-#define LBP_BASIC             0x10
-#define LBP_UNIFORM           0x11
-#define LBP_ROT_MIN8          0x12
-#define LBP_ROT_MIN16         0x13
-#define LBP_ROT_MIN32         0x14
+#define LBP_BASIC             0x01
+#define LBP_UNIFORM           0x02
+#define LBP_ROT_MIN8          0x03
+#define LBP_ROT_MIN16         0x04
+#define LBP_ROT_MIN32         0x05
 
 /* ------------------------------------------------------------------------- */
 

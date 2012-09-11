@@ -10,9 +10,16 @@
       Version:   $Revision: 0.9.0 $
 
    ------------------------------------------------------------------------- */
+#ifdef __WIN32__
 
-/* Pripojeni knihoven a hlavickovych souboru */
-#include <windows.h>
+    /* Pripojeni knihoven a hlavickovych souboru */
+    #include <windows.h>
+
+    #define  WINDLLMSG _declspec(dllexport)
+
+#else
+    #define WINDLLMSG ;
+#endif
 
 /* ------------------------------------------------------------------------- */
 
@@ -27,7 +34,7 @@
     unsigned int radiu - Vzdalenost bodu od stredu masky (polomer masky)
     unsigned int samples - Pocet bodu v okoli stredu
 */
-__declspec(dllexport) double * imageToLbp(int sizeX, int sizeY, double * data,
+WINDLLMSG double * imageToLbp(int sizeX, int sizeY, double * data,
   unsigned int type,unsigned int radius,unsigned int samples);
 
 /* ------------------------------------------------------------------------- */
@@ -41,7 +48,7 @@ __declspec(dllexport) double * imageToLbp(int sizeX, int sizeY, double * data,
 	  const int* data - Obrazova data
 	  int* result - Vystupni parametr do ktereho se zpetne ulozi data
 */
-__declspec(dllexport) int* realTimeLbp(int rows, int columns, const int* data,
+WINDLLMSG  int* realTimeLbp(int rows, int columns, const int* data,
   int* result);
 
 /* ------------------------------------------------------------------------- */
