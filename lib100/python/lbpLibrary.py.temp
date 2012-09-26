@@ -1,0 +1,127 @@
+"""@package lbpLibrary
+
+ verison 0.3.0
+ Author : Petr Neduchal
+ Date : 2012
+"""
+
+from PIL import Image
+import ctypes
+
+# Function loads dynamic library
+def loadLbpLibrary() :
+    """Function loads LBP library
+
+	Lbp.dll/liblbp.so (win/lin)
+    """
+    lbplib = ctypes.cdll.LoadLibrary("${DYNLIB}")
+    return lbplib
+ 
+def realTimeLbp(lbplib, filename) :
+    """Function calls extern function realTimeLbp 
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 filename - (string) path to the image file. 
+    """
+    im = Image.open(filename)
+    w,h = im.size
+    img = (ctypes.c_long * (w*h))()
+    res = (ctypes.c_long * 256)()
+    for i in range(w) :
+        for j in range(h) :
+            img[(w*i) + j] = im.getpixel((i, j))
+    lbplib.realTimeLbp(w,h,ctypes.byref(img), ctypes.byref(res))
+    return res
+
+def realTimeLbpIm(lbplib, im) :
+    """Function calls extern function realTimeLbp 
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 im - Instance of Image class from PIL module
+    """
+    w,h = im.size
+    img = (ctypes.c_long * (w*h))()
+    res = (ctypes.c_long * 256)()
+    for i in range(w) :
+        for j in range(h) :
+            img[(w*i) + j] = im.getpixel((i, j))
+    lbplib.realTimeLbp(w,h,ctypes.byref(img), ctypes.byref(res))
+    return res
+
+def realTimeLbpArr(lbplib, data, w, h) :
+    """Function calls extern function realTimeLbp 
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 data - (ctypes.c_long * (size of the image)) C type array 
+                 with Image data
+                 w - image width
+                 h - image height
+    """
+    res = (ctypes.c_long * 256)()
+    lbplib.realTimeLbp(w,h,ctypes.byref(data), ctypes.byref(res))
+    return res
+
+def imageToLbp(lbplib, filename, type = 1, radius = 1, samples = 8) :
+    """Function calls extern function imageToLbp
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 filename - (string) path to the image file. 
+                 type -  Type of LBP algorithm
+                 radius - Radius of samples in LBP mask.
+                 samples - Number of samples around the main point in LBP mask
+    """
+    im = Image.open(filename)
+    w,h = im.size
+    img = (ctypes.c_double * (w*h))()
+    for i in range(w) :
+        for j in range(h) :
+            img[(w*i) + j] = im.getpixel((i, j))
+    lbplib.imageToLbp(w,h, ctypes.byref(img), type, radius, samples)
+    return img
+
+# Function calls extern function imageToLbp
+# Params : lbplib - library pointer (see loadLbpLibrary)
+#          im - Instance of Image class from PIL module
+#          type -  Type of LBP algorithm
+#          radius - Radius of samples in LBP mask.
+#          samples - Number of samples around the main point in LBP mask
+def imageToLbpIm(lbplib, im, type = 1, radius = 1, samples = 8) :
+    """Function calls extern function imageToLbp
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 im - Instance of Image class from PIL module
+                 type -  Type of LBP algorithm
+                 radius - Radius of samples in LBP mask.
+                 samples - Number of samples around the main point in LBP mask
+    """
+    w,h = im.size
+    img = (ctypes.c_double * (w*h))()
+    for i in range(w) :
+        for j in range(h) :
+            img[(w*i) + j] = im.getpixel((i, j))
+    lbplib.imageToLbp(w,h, ctypes.byref(img), type, radius, samples)
+    return img
+
+# Function calls extern function imageToLbp
+# Params : lbplib - library pointer (see loadLbpLibrary)
+#          data - (ctypes.c_long * (size of the image)) C type array 
+#                 with Image data
+#          w - image width
+#          h - image height
+#          type -  Type of LBP algorithm
+#          radius - Radius of samples in LBP mask.
+#          samples - Number of samples around the main point in LBP mask
+def imageToLbpArr(lbplib, data, w, h, type = 1, radius = 1, samples = 8) :
+    """Function calls extern function imageToLbp
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 with Image data
+                 w - image width
+                 h - image height
+                 type -  Type of LBP algorithm
+                 radius - Radius of samples in LBP mask.
+                 samples - Number of samples around the main point in LBP mask
+    """
+    lbplib.imageToLbp(w,h, ctypes.byref(data), type, radius, samples)
+    return img
+    

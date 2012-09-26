@@ -1,0 +1,5 @@
+function loadLbpLibrary
+% Funkce nacte knihovnu lbp.dll
+% Volani : loadLbpLibrary
+
+loadlibrary('${DYNLIB}','lbp.h')
