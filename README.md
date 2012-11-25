@@ -5,6 +5,7 @@ Required Dependencies
 ---------------------
 
 * ITK version 3.x.x - recommended instalation example
+
   Download :  http://www.itk.org/ITK/resources/software.html
   Unzip : C:/projects/itk
   Cmake : C:/projects/itk/bin cmake or cmake-gui (win/lin)  (option : Build shared libraries) 
