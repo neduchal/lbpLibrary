@@ -6,14 +6,16 @@ Required Dependencies
 
 * ITK version 3.x.x - recommended instalation example
 
-  $ Download :  http://www.itk.org/ITK/resources/software.html
-  $ Unzip : C:/projects/itk
-  $ Cmake : C:/projects/itk/bin cmake or cmake-gui (win/lin)  (option : Build shared libraries) 
-  $ Make : C:/projects/itk/bin/ sudo make install (lin)  or build in MSVC (win)
+  Download :  http://www.itk.org/ITK/resources/software.html   
+  Unzip : C:/projects/itk         
+  Cmake : C:/projects/itk/bin cmake or cmake-gui (win/lin)  (option : Build shared libraries)  
+  Make : C:/projects/itk/bin/ sudo make install (lin)  or build in MSVC (win) 
 
 * Python
 
 * Matlab (This version does not support Octave)
+
+(note : C:/projects/itk  - this is only sample path to the projects folder.)
 
 Installation Guide Ubuntu 12.04 
 -------------------------------
@@ -24,10 +26,10 @@ sudo apt-get install cmake insighttoolkit3-examples libinsighttoolkit3-dev libgd
 
 Installation Guide Windows 7 
 -------------------------------
-Download last version of lbpLibrary
-Unzip libxxx (for example lib100 ) foledr to C:/projects/lbp
-Cmake : C:/projects/lbp/bin
-MSVC : Build library
+Download last version of lbpLibrary   
+Unzip libxxx (for example lib100 ) folder to C:/projects/lbp   
+Cmake : C:/projects/lbp/bin   
+MSVC : Build library  
 
 Using library
 -------------
