@@ -1,6 +1,8 @@
 lbpLibrary
 ==========
 
+* Popis instalace (na linuxu) nové verze je uveden ve wiki na stránce LbpLibrary 2.0.0.
+
 Required Dependencies
 ---------------------
 
