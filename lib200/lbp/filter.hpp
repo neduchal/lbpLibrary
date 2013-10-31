@@ -1,9 +1,9 @@
 
-#ifndef __filter_h
-#define __filter_h
+#ifndef __filter_hpp
+#define __filter_hpp
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <string>
 
 // Helping macro for real-time algorithm

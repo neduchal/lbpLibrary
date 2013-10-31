@@ -1,8 +1,8 @@
-#ifndef __histogram_h
-#define __histogram_h
+#ifndef __histogram_hpp
+#define __histogram_hpp
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <string>
 #include <list>
 #include <vector>

@@ -1,12 +1,12 @@
-#ifndef __criterion_h
-#define __criterion_h
+#ifndef __criterion_hpp
+#define __criterion_hpp
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <string>
 #include <list>
 #include <vector>
-#include "histogram.h"
+#include "histogram.hpp"
 
 /* ========================================================================= */
 
