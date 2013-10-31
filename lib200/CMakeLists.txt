@@ -77,13 +77,7 @@ if (LBPLIB_ITK)
   ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 ENDIF(LBPLIB_ITK)     
 
-if (LBPLIB_BUILD_YAML )
-   file(GLOB YAMLFiles ${PROJECT_SOURCE_DIR}/lbp_yaml/*.*)
-   ADD_EXECUTABLE(yamltest ${YAMLFiles})
-
-ENDIF(LBPLIB_BUILD_YAML )    
-
-ADD_EXECUTABLE(test test.cxx)
+#ADD_EXECUTABLE(test test.cxx)
 
 #CONFIGURE_FILE(python/lbpLibrary.py.temp  python/lbpLibrary.py ${DYNLIB})
 #CONFIGURE_FILE(matlab/loadLbpLibrary.m.temp  matlab/loadLbpLibrary.m ${DYNLIB})
