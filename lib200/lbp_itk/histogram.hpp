@@ -1,5 +1,5 @@
-#ifndef __histogram_h
-#define __histogram_h
+#ifndef __histogram_hpp
+#define __histogram_hpp
 
 /**
  \file histogram.h

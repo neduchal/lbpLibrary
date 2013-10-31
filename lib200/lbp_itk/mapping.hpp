@@ -1,5 +1,5 @@
-#ifndef __mapping_h
-#define __mapping_h
+#ifndef __mapping_hpp
+#define __mapping_hpp
 
 /**
  \file mapping.h
@@ -16,7 +16,7 @@
 #include <cmath>
 #include "itkImage.h"
 #include "itkImageRegionIterator.h"
-#include "const.h"
+#include "const.hpp"
 
 /* ------------------------------------------------------------------------- */
   

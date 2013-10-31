@@ -12,12 +12,12 @@
    ------------------------------------------------------------------------- */
 
 /* Necessary headers */  
-#include "const.h"
+#include "const.hpp"
 #include "imageToLbpFilter.h"
 #include "realtimeLbp.h"
 #include <iostream>
-#include <stdlib.h>
-#include "lbpCxx.h"
+#include <cstdlib>
+#include "lbpCxx.hpp"
 
 // Helping macro for real-time algorithm
 #define compab_mask_inc(ptr,shift) \

@@ -1,5 +1,5 @@
-#ifndef __mask_h
-#define __mask_h
+#ifndef __mask_hpp
+#define __mask_hpp
 
 /**
  \file mask.h
@@ -11,11 +11,11 @@
 
 /* Necessary headers */  
 #include <vector>
-#include <math.h>
+#include <cmath>
 #include <iostream>
 #include "itkImage.h"
 #include "itkImageRegionIterator.h"
-#include "const.h"
+#include "const.hpp"
 
 /* Useful constants */
 

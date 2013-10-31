@@ -1,5 +1,5 @@
-#ifndef __realtimeLbp_h
-#define __realtimeLbp_h
+#ifndef __realtimeLbp_hpp
+#define __realtimeLbp_hpp
 
 /**
  \file realtimeLbp.h
@@ -11,8 +11,8 @@
 
 
 /* Necessary headers */   
-#include <string.h>
-#include <stdlib.h>
+#include <cstring>
+#include <cstdlib>
 
 /* ------------------------------------------------------------------------- */
 

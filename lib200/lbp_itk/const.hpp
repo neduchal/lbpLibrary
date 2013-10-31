@@ -1,5 +1,5 @@
-#ifndef __const_h
-#define __const_h
+#ifndef __const_hpp
+#define __const_hpp
 
 
 /**

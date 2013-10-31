@@ -12,7 +12,7 @@
    ------------------------------------------------------------------------- */
 
 /* Necessary headers */  
-#include "mask.h"
+#include "mask.hpp"
 
 /* Constants */
 #define RADIAN 57.29 // pro prevod na  radiany

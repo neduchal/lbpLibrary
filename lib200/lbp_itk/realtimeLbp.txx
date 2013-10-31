@@ -12,9 +12,9 @@
    ------------------------------------------------------------------------- */
  
 /* Necessary headers */  
-#include <string.h>
-#include <stdlib.h>
-#include "realtimeLbp.h"
+#include <cstring>
+#include <cstdlib>
+#include "realtimeLbp.hpp"
 
 // Macro
 #define compab_mask_inc(ptr,shift) \

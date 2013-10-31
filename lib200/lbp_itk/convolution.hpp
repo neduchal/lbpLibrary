@@ -1,5 +1,5 @@
-#ifndef __convolution_h
-#define __convolution_h
+#ifndef __convolution_hpp
+#define __convolution_hpp
 
 /**
  \file convolution.h
@@ -12,7 +12,7 @@
 /* Necessary headers */ 
 #include <vector>
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include "itkImageToImageFilter.h"
 #include "itkImage.h"
 #include "itkVnlFFTRealToComplexConjugateImageFilter.h"

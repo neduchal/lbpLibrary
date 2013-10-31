@@ -1,5 +1,5 @@
-#ifndef __io_h
-#define __io_h
+#ifndef __io_hpp
+#define __io_hpp
 
 /**
  \file io.h

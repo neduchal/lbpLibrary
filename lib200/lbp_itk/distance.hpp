@@ -1,5 +1,5 @@
-#ifndef __distance_h
-#define __distance_h
+#ifndef __distance_hpp
+#define __distance_hpp
 
 /**
  \file distance.h
@@ -10,7 +10,7 @@
  */
 
 /* Necessary headers */ 
-#include <math.h>
+#include <cmath>
 
 /* ------------------------------------------------------------------------- */
 

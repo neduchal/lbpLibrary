@@ -1,5 +1,5 @@
-#ifndef __lbp_h
-#define __lbp_h
+#ifndef __lbp_hpp
+#define __lbp_hpp
 
 /**
  \file lbp.h

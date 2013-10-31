@@ -1,5 +1,5 @@
-#ifndef __lbpCxx_h
-#define __lbpCxx_h
+#ifndef __lbpCxx_hpp
+#define __lbpCxx_hpp
 
 /**
  \file lbpCxx.h

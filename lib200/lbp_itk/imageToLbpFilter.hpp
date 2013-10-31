@@ -1,5 +1,5 @@
-#ifndef __imageToLbpFilter_h
-#define  __imageToLbpFilter_h
+#ifndef __imageToLbpFilter_hpp
+#define  __imageToLbpFilter_hpp
 
 /**
  \file imageToLbpFilter.h
@@ -17,12 +17,12 @@
 #include "itkVnlFFTComplexConjugateToRealImageFilter.h"
 #include "itkMultiplyImageFilter.h"
 #include "itkImageRegionIterator.h"
-#include "const.h"
-#include "mask.h"
+#include "const.hpp"
+#include "mask.hpp"
 #include "mask.txx"
-#include "mapping.h"
+#include "mapping.hpp"
 #include "mapping.txx"
-#include "convolution.h"
+#include "convolution.hpp"
 #include "convolution.txx"
 
 /** \def MAX_SAMPLES 
