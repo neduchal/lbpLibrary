@@ -15,7 +15,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
-#include "realtimeCxx.h"
+#include "realtimeCxx.hpp"
 
 // Helping macro for real-time algorithm
 #define compab_mask_inc(ptr,shift) \

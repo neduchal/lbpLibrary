@@ -6,8 +6,8 @@
 
 cmake_minimum_required(VERSION 2.8)
 
-ADD_LIBRARY(RealtimeLbp SHARED realtime.c realtime.h 
-							 realtimeCxx.cxx realtimeCxx.h  	                     
+ADD_LIBRARY(RealtimeLbp SHARED realtime.cxx realtime.hpp 
+							 realtimeCxx.cxx realtimeCxx.hpp  	                     
               )
 
 TARGET_LINK_LIBRARIES(RealtimeLbp ${Libraries} )	

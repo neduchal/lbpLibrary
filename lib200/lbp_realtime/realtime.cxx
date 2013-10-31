@@ -1,5 +1,5 @@
-#ifndef __realtime_c
-#define __realtime_c
+#ifndef __realtime_cxx
+#define __realtime_cxx
 
 /* -------------------------------------------------------------------------
 
@@ -12,8 +12,8 @@
    ------------------------------------------------------------------------- */
 
 /* Necessary headers */  
-#include "realtimeCxx.h"
-#include "realtime.h"
+#include "realtimeCxx.hpp"
+#include "realtime.hpp"
 
 /* ------------------------------------------------------------------------- */
 

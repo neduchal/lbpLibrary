@@ -1,5 +1,5 @@
-#ifndef __realtimeCxx_h
-#define __realtimeCxx_h
+#ifndef __realtimeCxx_hpp
+#define __realtimeCxx_hpp
 
 /**
  \file realtimeCxx.h
