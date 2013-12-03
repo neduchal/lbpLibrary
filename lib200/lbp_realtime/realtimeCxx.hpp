@@ -31,6 +31,11 @@ int* realTimeLbpCxx(int rows, int columns, const int* data, int* result);
 #ifdef __cplusplus
   extern "C"
 #endif
+int* realTimeLbp2x8Cxx(int rows, int columns, const int* data, int* result);
+
+#ifdef __cplusplus
+  extern "C"
+#endif
 int * realTimeLbpImCxx(int rows, int columns, const int* data, int* result);
 /* ------------------------------------------------------------------------- */
 

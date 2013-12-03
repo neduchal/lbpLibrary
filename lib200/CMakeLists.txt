@@ -35,9 +35,9 @@ option (LBPLIB_BUILD_OPENCV
 option (LBPLIB_BUILD_EIGEN
         "Add Eigen version of some functions" OFF)
         
-# Option Build LbpLibrary Texture database engine
+# Option Build Queetech database engine
 option (LBPLIB_BUILD_DB 
-        "Build LbpLibrary Texture database engine" OFF) 
+        "Build LbpLibrary Texture database engine" ON) 
         
 # Option Add Boost support 
 option (LBPLIB_ADD_BOOST

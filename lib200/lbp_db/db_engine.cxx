@@ -1,11 +1,11 @@
-#include "_engine.h"
+#include "db_engine.hpp"
 
 using namespace std;
 
 namespace queetech
 {
 
-  namespace lbplib
+  namespace database
   {
 
     /* 
@@ -84,17 +84,17 @@ namespace queetech
     void DataNode::addData(string data_property, string data_value)
     {
       InnerData *newData = new InnerData(data_property, data_value);
-      this->m_innerData.push_back(newData);    } 
+      this->m_innerData.push_back(newData);    
+		} 
     
     void DataNode::toFile(fstream &f)
     {
-      f << this->m_name << " : {\n";
+      f << this->m_name << "\n";
       list<InnerData *>::iterator it = this->m_innerData.begin();
       for(it; it != this->m_innerData.end(); it++)
       {
-        f << "    " << (*it)->getProperty() << " : " << (*it)->getValue() << "\n";
+        f << "::" << (*it)->getProperty() << "::" << (*it)->getValue() << "\n";
       }   
-      f << "}\n";
     }
 
     /* 
@@ -103,46 +103,76 @@ namespace queetech
 
     Engine::Engine(string filename)
     {
-      this->m_file = new fstream(filename.c_str());      
-      this->parse();
+			this->m_filename = filename;
+      this->m_file = new fstream(filename.c_str());  
+			this->m_file->close();   
     }
 
     Engine::~Engine() {}
       
-    void Engine::parse() {};
+    void Engine::parse() 
+		{
+			string sep("::");
+			string eof("...");
+			cout << this->m_filename.c_str() << endl;
+			this->m_file->open(this->m_filename.c_str(), ios_base::in);
+   		string line = this->readLine();
+			cout << line << endl;
+			int ij = 0;
+			while(line.compare(0,3,eof) != 0)
+			{
+				ij++;
+				if(ij > 7) break;
+				
+				if(line.compare(0,2,sep) != 0)
+				{
+					DataNode *node = new DataNode(line);
+					this->m_data.push_back(node);
+					cout << line << endl;
+				}
+				else
+				{
+					string data = line.substr(2);
+					int pos = data.find(sep);
+					string property = data.substr(0,pos);
+					string value = data.substr(pos+2);
+					this->m_data.back()->addData(property, value);
+					cout << "  "<< property << " = "<< value << endl;
+				}
+				line = this->readLine();
+			}
+			this->m_file->close();
+
+		}
 
 
     string Engine::readLine()
     {
-      if (!this->m_file->eof())
-      {
-        string temp;
-        getline(*this->m_file,temp);
-        if(temp.compare("")) 
-          temp = this->readLine();
-        return temp;
-      }
-      return "...";
+        char temp[256];
+        this->m_file->getline(temp, 256);
+				string temp2(temp);
+        return temp2;
     }
 
     void Engine::writeData()
     {
+
+			this->m_file->open(this->m_filename.c_str(), ios_base::out);
       list<DataNode *>::iterator it = this->m_data.begin();
 
       for (it; it != this->m_data.end(); it++)
       {
         (*it)->toFile(*this->m_file);
       }
+			(*this->m_file) << "...";
+			this->m_file->close();
     }
 
-    void Engine::close()
-    {
-      this->m_file->close();
-    }
+    bool Engine::addNode(string property, string value);
+    bool Engine::addGroup(string groupName);
+		bool Engine::addNodeToGroup(string property, string value, string groupName);
 
-    bool addDataSingle(string file_name, string node_name, string );
-    bool addDataSingle();
-    bool addDataGroup();
+
     bool removeDataSingle(int node_id);
     bool removeDataSingle(string node_name);
     bool removeDataGroup(vector<int> node_ids);

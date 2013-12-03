@@ -1,5 +1,5 @@
-#ifndef __yaml_engine_h
-#define __yaml_engine_h
+#ifndef __db_engine_hpp
+#define __db_engine_hpp
 
 #include <iostream>
 #include <fstream>
@@ -12,14 +12,29 @@ using namespace std;
 namespace queetech 
 {
 
-  namespace lbplib 
+	/**
+		@namespace database
+			
+		Namespace obsahující třídy pro správu jednoduché souborové databáze 
+		založeného na základních vlastnostech standardu YAML
+
+	*/
+  namespace database 
   {
+
     /* --------------------------------------------------------------------- */
-    class InnerData
+
+		/**
+			@class InnerData
+			
+			Třída polozky databázového systému pro ukládání jednoduchých dat
+
+		*/
+    class InnerData 
     {
     private:
-      string m_property;
-      string m_value;
+      string m_property; // Vlastnost polozky
+      string m_value; // Hodnota polozky
     public:
       InnerData(string data_property, string data_value);
       ~InnerData();
@@ -30,11 +45,18 @@ namespace queetech
     };
 
     /* --------------------------------------------------------------------- */
+
+		/**
+			@class DataNode
+			
+			Třída skupiny položek db systému pro ukládání jednoduchých dat
+
+		*/
     class DataNode
     {
     private:
-      string m_name;
-      list<InnerData *> m_innerData;
+      string m_name; // Název skupiny
+      list<InnerData *> m_innerData; // Položky skupiny
 
     public:
       DataNode(string name);
@@ -46,33 +68,44 @@ namespace queetech
     };
 
     /* --------------------------------------------------------------------- */
-    class DbEngine
+
+		/**
+			@class DbEngine
+			
+			Třída databázového systému pro ukládání jednoduchých dat
+
+		*/
+    class Engine
     {
     private:
+			string 	m_filename;
       fstream *m_file;  
 
       list<DataNode *> m_data;
       list<DataNode *>::iterator m_it;
   
     public: 
-      DbEngine(string filename);
-      ~DbEngine();
+      Engine(string filename);
+      ~Engine();
            
       void parse();
       string readLine();
       void writeData();
       void close();    
+			void setFilename(string filename) { this->m_filename = filename;}
 
-      bool addDataSingle(string file_name, string node_name, list<YamlInnerData *> node_data );
+    	bool addNode(string property, string value);
+    	bool addGroup(string groupName);
+			bool addNodeToGroup(string property, string value, string groupName);
       bool removeDataByProperty(string node_property, string node_value);
-
+			
 
       bool rewind();
       bool nextNode();
       bool previousNode();
-      YamlDataNode * getFirst();
-      YamlDataNode * getLast();
-      YamlDataNode * getActual();
+      DataNode * getFirst();
+      DataNode * getLast();
+      DataNode * getActual();
       
     };
   

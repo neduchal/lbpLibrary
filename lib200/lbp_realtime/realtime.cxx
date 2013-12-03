@@ -24,6 +24,16 @@ WINDLLMSG  int* realTimeLbp(int rows, int columns, const int* data,
   return dataOut;
 }
 
+
+/* ------------------------------------------------------------------------- */
+
+WINDLLMSG  int* realTimeLbp2x8(int rows, int columns, const int* data,
+  int* result)
+{
+  int* dataOut = realTimeLbp2x8Cxx(rows, columns, data, result);
+  return dataOut;
+}
+
 /* ------------------------------------------------------------------------- */
 
 WINDLLMSG  int* realTimeLbpIm(int rows, int columns, const int* data,

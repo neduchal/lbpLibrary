@@ -64,6 +64,22 @@ def realTimeLbpImNp(lbplib, npIM) :
     lbplib.realTimeLbp(w,h,ctypes.byref(img), ctypes.byref(res))
     return res
 
+def realTimeLbp2x8ImNp(lbplib, npIM) :
+    """Function calls extern function realTimeLbpImNp
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 npIM - NumPy matrix
+    """
+    w = npIM.shape[0]
+    h = npIM.shape[1]
+    img = (ctypes.c_long * (w*h))()
+    res = (ctypes.c_long * 256)()
+    for i in range(w) :
+        for j in range(h) :
+            img[(w*i) + j] = npIM[i,j]
+    lbplib.realTimeLbp2x8(w,h,ctypes.byref(img), ctypes.byref(res))
+    return res
+
 def realTimeLbpIm2ImNp(lbplib, npIM) :
     """Function calls extern function realTimeLbpImNp
 
