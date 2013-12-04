@@ -113,9 +113,9 @@ int * realTimeLbp2x8Cxx(int rows, int columns, const int* data, int* result)
   // Memory allocation
   memset(result, 0, 256*sizeof(int));
   // Main cycle
-  for (r=0;r<rows-2;r++)
+  for (r=0;r<rows-4;r++)
   {
-    for (c=0;c<columns-2;c++)
+    for (c=0;c<columns-4;c++)
     {
       value = 0;
       cntr = *center - 1;
