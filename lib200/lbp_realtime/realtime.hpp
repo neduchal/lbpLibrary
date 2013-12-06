@@ -43,6 +43,9 @@ WINDLLMSG  int* realTimeLbp(int rows, int columns, const int* data,
 WINDLLMSG  int* realTimeLbp2x8(int rows, int columns, const int* data,
   int* result);
 
+WINDLLMSG  int* realTimeLbp3x10(int rows, int columns, const int* data,
+  int* result);
+
 
 WINDLLMSG  int* realTimeLbpIm(int rows, int columns, const int* data,
   int* result);

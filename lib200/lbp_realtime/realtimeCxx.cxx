@@ -17,6 +17,7 @@
 #include <cstring>
 #include "realtimeCxx.hpp"
 
+
 // Helping macro for real-time algorithm
 #define compab_mask_inc(ptr,shift) \
 { value |= ((unsigned int)(cntr - *ptr) & 0x80000000) \

@@ -1,5 +1,5 @@
-#ifndef __realtimeLbp3x10Cxx_cxx
-#define __realtimeLbp3x10Cxx_cxx
+#ifndef __realtimeLbp4x12Cxx_cxx
+#define __realtimeLbp4x12Cxx_cxx
 
 /* -------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
-#include "realtimeLbp3x10Cxx.hpp"
+#include "realtimeLbp4x12Cxx.hpp"
 
 // Helping macro for real-time algorithm
 #define compab_mask_inc(ptr,shift) \
@@ -35,7 +35,7 @@ using namespace std;
 
 /* ------------------------------------------------------------------------- */
 
-int * realTimeLbp3x10Cxx(int rows, int columns, const int* data, int* result)
+int * realTimeLbp4x12Cxx(int rows, int columns, const int* data, int* result)
 {
   // MASK (group of pointers 
   const int *p01 = data + 2,
@@ -79,15 +79,15 @@ int * realTimeLbp3x10Cxx(int rows, int columns, const int* data, int* result)
 	int r,c,cntr;
 	unsigned int value;
   // Memory allocation
-  memset(result, 0, 1024*sizeof(int));
+  memset(result, 0, 4096*sizeof(int));
   // Main cycle
-  for (r=0;r<rows-6;r++)
+  for (r=0;r<rows-8;r++)
   {
-    for (c=0;c<columns-6;c++)
+    for (c=0;c<columns-8;c++)
     {
       value = 0;
 
-			// TODO : zkontrolovat na zaklade nakresu
+			// TODO : predelat na verzi 4x12
       cntr = *center - 1;
       compab_mask_inc_diag2(p04, p03, p02, p01, 0)
       compab_mask_inc_diag2(p13, p14, p11, p12, 0)
@@ -141,6 +141,6 @@ int * realTimeLbp3x10Cxx(int rows, int columns, const int* data, int* result)
   
   return result;
 }
-
 /* ------------------------------------------------------------------------- */
+
 #endif
