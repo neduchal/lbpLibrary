@@ -13,6 +13,7 @@
 
 /* Necessary headers */  
 #include "realtimeCxx.hpp"
+#include "realtimeLbp2x8Cxx.hpp"
 #include "realtimeLbp3x10Cxx.hpp"
 #include "realtime.hpp"
 
