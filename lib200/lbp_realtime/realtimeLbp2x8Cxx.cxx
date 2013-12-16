@@ -66,7 +66,6 @@ int * realTimeLbp2x8Cxx(int rows, int columns, const int* data, int* result)
       value = 0;
       cntr = *center - 1;
       compab_mask_inc_diag(p04, p03, p02, p01, 0)
-      compab_mask_inc(p0,0);
       compab_mask_inc(p1,1);
       compab_mask_inc_diag(p23, p24, p21, p22, 2)
       compab_mask_inc(p3,3);
