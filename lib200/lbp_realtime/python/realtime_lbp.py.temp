@@ -17,38 +17,7 @@ def loadRealtimeLbpLibrary() :
     lbplib = ctypes.cdll.LoadLibrary("${DYNLIB}")
     return lbplib
  
-def realTimeLbp(lbplib, filename) :
-    """Function calls extern function realTimeLbp 
-
-	     Params : lbplib - library pointer (see loadLbpLibrary)
-                 filename - (string) path to the image file. 
-    """
-    im = Image.open(filename)
-    w,h = im.size
-    img = (ctypes.c_long * (w*h))()
-    res = (ctypes.c_long * 256)()
-    for i in range(w) :
-        for j in range(h) :
-            img[(w*i) + j] = im.getpixel((i, j))
-    lbplib.realTimeLbp(w,h,ctypes.byref(img), ctypes.byref(res))
-    return res
-
-def realTimeLbpIm(lbplib, im) :
-    """Function calls extern function realTimeLbp 
-
-	Params : lbplib - library pointer (see loadLbpLibrary)
-                 im - Instance of Image class from PIL module
-    """
-    w,h = im.size
-    img = (ctypes.c_long * (w*h))()
-    res = (ctypes.c_long * 256)()
-    for i in range(w) :
-        for j in range(h) :
-            img[(w*i) + j] = im.getpixel((i, j))
-    lbplib.realTimeLbp(w,h,ctypes.byref(img), ctypes.byref(res))
-    return res
-
-def realTimeLbpImNp(lbplib, npIM) :
+def realTimeLbp1x8(lbplib, npIM) :
     """Function calls extern function realTimeLbpImNp
 
 	Params : lbplib - library pointer (see loadLbpLibrary)
@@ -64,7 +33,7 @@ def realTimeLbpImNp(lbplib, npIM) :
     lbplib.realTimeLbp(w,h,ctypes.byref(img), ctypes.byref(res))
     return res
 
-def realTimeLbp2x8ImNp(lbplib, npIM) :
+def realTimeLbp2x8(lbplib, npIM) :
     """Function calls extern function realTimeLbpImNp
 
 	Params : lbplib - library pointer (see loadLbpLibrary)
@@ -80,7 +49,7 @@ def realTimeLbp2x8ImNp(lbplib, npIM) :
     lbplib.realTimeLbp2x8(w,h,ctypes.byref(img), ctypes.byref(res))
     return res
 
-def realTimeLbp3x10ImNp(lbplib, npIM) :
+def realTimeLbp3x10(lbplib, npIM) :
     """Function calls extern function realTimeLbpImNp
 
 	Params : lbplib - library pointer (see loadLbpLibrary)
@@ -89,14 +58,14 @@ def realTimeLbp3x10ImNp(lbplib, npIM) :
     w = npIM.shape[0]
     h = npIM.shape[1]
     img = (ctypes.c_long * (w*h))()
-    res = (ctypes.c_long * 256)()
+    res = (ctypes.c_long * 1024)()
     for i in range(w) :
         for j in range(h) :
             img[(w*i) + j] = npIM[i,j]
     lbplib.realTimeLbp3x10(w,h,ctypes.byref(img), ctypes.byref(res))
     return res
 
-def realTimeLbpIm2ImNp(lbplib, npIM) :
+def realTimeLbp4x12(lbplib, npIM) :
     """Function calls extern function realTimeLbpImNp
 
 	Params : lbplib - library pointer (see loadLbpLibrary)
@@ -105,48 +74,17 @@ def realTimeLbpIm2ImNp(lbplib, npIM) :
     w = npIM.shape[0]
     h = npIM.shape[1]
     img = (ctypes.c_long * (w*h))()
-    res = (ctypes.c_long * (w*h))()
+    res = (ctypes.c_long * 4096)()
     for i in range(w) :
         for j in range(h) :
             img[(w*i) + j] = npIM[i,j]
-    lbplib.realTimeLbpIm(w,h,ctypes.byref(img), ctypes.byref(res))
-    for i in range(w) :
-        for j in range(h) :
-            res2[i,j] = res[(w*i) + j]
-    return res2
-
-def realTimeLbpArr(lbplib, data, w, h) :
-    """Function calls extern function realTimeLbp 
-
-	Params : lbplib - library pointer (see loadLbpLibrary)
-                 data - (ctypes.c_long * (size of the image)) C type array 
-                 with Image data
-                 w - image width
-                 h - image height
-    """
-    res = (ctypes.c_long * 256)()
-    lbplib.realTimeLbp(w,h,ctypes.byref(data), ctypes.byref(res))
+    lbplib.realTimeLbp3x10(w,h,ctypes.byref(img), ctypes.byref(res))
     return res
 
-
-def lbp2Hists(lbplib, IM)
-    """Function calls extern function realTimeLbpImNp
-
-	Params : lbplib - library pointer (see loadLbpLibrary)
-                 npIM - NumPy matrix
+def lbp2Hists(lbplib, npIM)
     """
-    w = npIM.shape[0]
-    h = npIM.shape[1]
-    img = (ctypes.c_long * (w*h))()
-    res = (ctypes.c_long * (w*h))()
-    for i in range(w) :
-        for j in range(h) :
-            img[(w*i) + j] = npIM[i,j]
-    lbplib.lbp2Hists(w,h,ctypes.byref(img), ctypes.byref(res))
-    return res
-
-def lbp2HistsNp(lbplib, npIM)
-    """Function calls extern function realTimeLbpImNp
+		TODO : zkontrolovat co tahle funkce presne dela vzhledem k dynlib
+	Function calls extern function realTimeLbpImNp
 
 	Params : lbplib - library pointer (see loadLbpLibrary)
                  npIM - NumPy matrix
