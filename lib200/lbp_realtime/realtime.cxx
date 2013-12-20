@@ -15,6 +15,8 @@
 #include "realtimeCxx.hpp"
 #include "realtimeLbp2x8Cxx.hpp"
 #include "realtimeLbp3x10Cxx.hpp"
+#include "realtimeLbp4x12Cxx.hpp"
+#include "specialCxx.hpp"
 #include "realtime.hpp"
 
 /* ------------------------------------------------------------------------- */
@@ -42,6 +44,33 @@ WINDLLMSG  int* realTimeLbp3x10(int rows, int columns, const int* data,
   int* result)
 {
   int* dataOut = realTimeLbp3x10Cxx(rows, columns, data, result);
+  return dataOut;
+}
+
+/* ------------------------------------------------------------------------- */
+
+WINDLLMSG  int* realTimeLbp4x12(int rows, int columns, const int* data,
+  int* result)
+{
+  int* dataOut = realTimeLbp3x12Cxx(rows, columns, data, result);
+  return dataOut;
+}
+
+/* ------------------------------------------------------------------------- */
+
+WINDLLMSG  int* uniformLbp(int columns, const int* data,
+  int* result)
+{
+  int* dataOut = unifomrLbpCxx(columns, data, result);
+  return dataOut;
+}
+
+/* ------------------------------------------------------------------------- */
+
+WINDLLMSG  int* rotationMinLbp(int columns, const int* data,
+  int* result)
+{
+  int* dataOut = rotationMinCxx(columns, data, result);
   return dataOut;
 }
 

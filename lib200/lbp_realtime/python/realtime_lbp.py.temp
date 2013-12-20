@@ -81,6 +81,10 @@ def realTimeLbp4x12(lbplib, npIM) :
     lbplib.realTimeLbp3x10(w,h,ctypes.byref(img), ctypes.byref(res))
     return res
 
+#def uniformLbp(lbplib, npHist):
+ 
+#def rotationMinLbp(lbplib, nphist):   
+
 def lbp2Hists(lbplib, npIM)
     """
 		TODO : zkontrolovat co tahle funkce presne dela vzhledem k dynlib
