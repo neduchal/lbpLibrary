@@ -1,11 +1,11 @@
 """@package realtime LBP
 
- verison 0.4.0
+ verison 0.6.0
  Author : Petr Neduchal
- Date : 2013
+ Date : 2013-2014
 """
 
-from PIL import Image
+import numpy as np
 import ctypes
 
 # Function loads dynamic library
@@ -31,7 +31,10 @@ def realTimeLbp1x8(lbplib, npIM) :
         for j in range(h) :
             img[(w*i) + j] = npIM[i,j]
     lbplib.realTimeLbp(w,h,ctypes.byref(img), ctypes.byref(res))
-    return res
+    res2 = zeros([1, 256], dtype = np.int32)
+    for i in range(256)
+      res2[i] = res[i]
+    return res2
 
 def realTimeLbp2x8(lbplib, npIM) :
     """Function calls extern function realTimeLbpImNp
@@ -47,7 +50,10 @@ def realTimeLbp2x8(lbplib, npIM) :
         for j in range(h) :
             img[(w*i) + j] = npIM[i,j]
     lbplib.realTimeLbp2x8(w,h,ctypes.byref(img), ctypes.byref(res))
-    return res
+    res2 = zeros([1, 256], dtype = np.int32)
+    for i in range(256)
+      res2[i] = res[i]
+    return res2
 
 def realTimeLbp3x10(lbplib, npIM) :
     """Function calls extern function realTimeLbpImNp
@@ -63,7 +69,10 @@ def realTimeLbp3x10(lbplib, npIM) :
         for j in range(h) :
             img[(w*i) + j] = npIM[i,j]
     lbplib.realTimeLbp3x10(w,h,ctypes.byref(img), ctypes.byref(res))
-    return res
+    res2 = zeros([1, 1024], dtype = np.int32)
+    for i in range(1024)
+      res2[i] = res[i]
+    return res2
 
 def realTimeLbp4x12(lbplib, npIM) :
     """Function calls extern function realTimeLbpImNp
@@ -79,7 +88,10 @@ def realTimeLbp4x12(lbplib, npIM) :
         for j in range(h) :
             img[(w*i) + j] = npIM[i,j]
     lbplib.realTimeLbp3x10(w,h,ctypes.byref(img), ctypes.byref(res))
-    return res
+    res2 = zeros([1, 4096], dtype = np.int32)
+    for i in range(4096)
+      res2[i] = res[i]
+    return res2
 
 #def uniformLbp(lbplib, npHist):
  
