@@ -29,7 +29,7 @@ using namespace std;
 
 /* ------------------------------------------------------------------------- */
 
-int * lbp3dCxx(int rows, int columns, int slides, const double* centerX, const double* centerY, int radius, int pointsNum, const int* data, int* result)
+int * lbp3dCxx(int rows, int columns, int slides, const double* mask, const double* maskCoef, const int* data, int* result)
 {
 
 	// TODO : AUTOMATIC CREATION OF THE MASK

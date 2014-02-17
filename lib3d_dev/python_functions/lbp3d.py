@@ -112,7 +112,7 @@ def maskGenerator(N, width, height, sphereRadius, iterations, c, initType):
 	p = spherePoints(N, sphereRadius, iterations, c, initType);
 	p = p+offset
 	mask = np.zeros([p.shape[0]*8,1], dtype = np.double);
- 	maskCoef = np.zeros([p.shape[0],8], dtype = np.double);
+ 	maskCoef = np.zeros([p.shape[0]*8,1], dtype = np.double);
 	for i in range(p.shape[0]):
 		temp = p[i,:];
 		temp1 = np.round(temp);    
@@ -124,7 +124,7 @@ def maskGenerator(N, width, height, sphereRadius, iterations, c, initType):
 			for k in range(2):
 				for l in range(2):
 					mask[(i-1)*8 + m] = np.floor(x[j]) + np.floor(y[k])*width + np.floor(z[l])*width*height;                
-					maskCoef[i,m] =  np.abs(x[j]-temp1[0])*np.abs(y[k]-temp1[1])*np.abs(z[l]-temp1[2]);
+					maskCoef[(i-1)*8 + m] =  np.abs(x[j]-temp1[0])*np.abs(y[k]-temp1[1])*np.abs(z[l]-temp1[2]);
 					m = m + 1;
 	points['mask'] = mask
 	points['maskCoef'] = maskCoef
