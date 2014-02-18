@@ -126,6 +126,7 @@ def maskGenerator(N, width, height, sphereRadius, iterations, c, initType):
 					mask[(i-1)*8 + m] = np.floor(x[j]) + np.floor(y[k])*width + np.floor(z[l])*width*height;                
 					maskCoef[(i-1)*8 + m] =  np.abs(x[j]-temp1[0])*np.abs(y[k]-temp1[1])*np.abs(z[l]-temp1[2]);
 					m = m + 1;
+	points['center'] = np.floor(offset) + np.floor(offset)*width + np.floor(offset)*width*height; 
 	points['mask'] = mask
 	points['maskCoef'] = maskCoef
 	return points

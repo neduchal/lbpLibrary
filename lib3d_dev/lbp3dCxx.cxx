@@ -20,71 +20,86 @@
 
 
 // Helping macro for real-time algorithm
-#define compab_mask_inc(ptr,shift) \
-{ value |= ((unsigned int)(cntr - *ptr) & 0x80000000) \
->> (31-shift); ptr++; }
+#define compab_mask_inc(A, B, C, D, E, F, G, H, Ac, Bc, Cc, Dc, Ec, Fc, Gc, Hc, shift) \
+{ value |= ((unsigned int)(cntr - (A*Ac + B*Bc + C*Cc + D*Dc + E*Ec + F*Fc + G*Gc + H*Hc)) & 0x80000000) \
+>> (31-shift); A++; B++; C++; D++; E++; F++;G++; H++; 
 
 
 using namespace std;
 
 /* ------------------------------------------------------------------------- */
+/**
+	Function lbp3dCxx
 
-int * lbp3dCxx(int rows, int columns, int slides, const double* mask, const double* maskCoef, const int* data, int* result)
+	- 3D Version of LBP texture analysis method.
+  - Parameters :
+			* rows - Nuber of rows in data
+			* columns - Nuber of columns in data
+			* slides - Number of slides in data
+			* mask - Int numbers of voxel position in mask
+			* maskCoef - Coefs for voxels in mask
+			* pointsNum - Number of points in mask
+			* center - Int position of center voxel in mask
+			* radius - radius of mask
+			* data - input data
+			*result - output data 
+*/
+int * lbp3dCxx(int rows, int columns, int slides, const int* mask, const double* maskCoef, const int pointsNum, const int center, const int radius, const int* data, int* result)
 {
 
-	// TODO : AUTOMATIC CREATION OF THE MASK
-  // MASK (group of pointers 
-  /*const int *p0 = data,
-     *p1 = p0 + 1,
-     *p2 = p1 + 1,
-     *p3 = p2 + columns,
-     *p4 = p3 + columns,
-     *p5 = p4 - 1,
-     *p6 = p5 - 1,
-     *p7 = p6 - columns,
-		*center = p7 + 1;*/
+	const int *p0 = data;
+	const int *maskPos = mask;
+  const int *pointers[pointsNum * 8];
+
+	/* Mask settings*/
+	for(int i = 0; i < pointsNum * 8; i++)
+	{
+		*pointers[i] = p0 + *(mask+i);
+	}
+	const int *center = p0 + center
+
   // Help variables for rows,cols and center
 	int r,c,s,cntr;
 	unsigned int value;
   // Memory allocation
   memset(result, 0, pow(2,pointsNum)*sizeof(int));
   // Main cycle
-  for (r=0;r < rows - (radius*2); r++)
+  for (s=0;s < slides - (radius*2); s++)
   {
-    for (c=0;c < columns - (radius*2); c++)
+    for (r=0; r < rows - (radius*2); r++)
     {
-			for (s=0;s < slides - (radius*2); s++)
+			for (c=0;c < columns - (radius*2); c++)
 			{
-
-			// TODO : main loop with created mask
-
-/*
-      value = 0;
-      cntr = *center - 1;
-      
-      compab_mask_inc(p0,0);
-      compab_mask_inc(p1,1);
-      compab_mask_inc(p2,2);
-      compab_mask_inc(p3,3);
-      compab_mask_inc(p4,4);
-      compab_mask_inc(p5,5);
-      compab_mask_inc(p6,6);
-      compab_mask_inc(p7,7);
-      center++;
-      result[value]++;
+      	value = 0;
+      	cntr = *center - 1;
+				for(int i = 0; i < pointsNum;i++)
+				{
+					compab_mask_inc(pointers[(i)*8], pointers[(i)*8+1], pointers[(i)*8+2], pointers[(i)*8+3], pointers[(i)*8+4], pointers[(i)*8+5], pointers[(i)*8+6], pointers[(i)*8+7], maskCoef[i*8], maskCoef[i*8], maskCoef[i*8], maskCoef[i*8], maskCoef[i*8], maskCoef[i*8], maskCoef[i*8], maskCoef[i*8], i);
+				}
+      	center++;
+      	result[value]++;
 			}
-	    p0 += 2;
-	    p1 += 2;
-	    p2 += 2;
-	    p3 += 2;
-	    p4 += 2;
-	    p5 += 2;
-	    p6 += 2;
-	    p7 += 2;
-	    center += 2;
 
-*/
+	    p0 += (radius*2);
+	    p1 += (radius*2);
+	    p2 += (radius*2);
+	    p3 += (radius*2);
+	    p4 += (radius*2);
+	    p5 += (radius*2);
+	    p6 += (radius*2);
+	    p7 += (radius*2);
+	    center += (radius*2);
     }
+
+	  p0 += (radius*2)*columns;
+	  p1 += (radius*2)*columns;
+	  p2 += (radius*2)*columns;
+	  p3 += (radius*2)*columns;
+	  p4 += (radius*2)*columns;
+	  p5 += (radius*2)*columns;
+	  p6 += (radius*2)*columns;
+	  p7 += (radius*2)*columns;
+	  center += (radius*2)*columns;
   }
   
   return result;
@@ -94,87 +109,5 @@ int * lbp3dCxx(int rows, int columns, int slides, const double* mask, const doub
 /* ------------------------------------------------------------------------- */
 
 
-int * realTimeLbpImCxx(int rows, int columns, const int* data, int* result)
-{
-  // MASK (group of pointers 
-  const int *p0 = data,
-     *p1 = p0 + 1,
-     *p2 = p1 + 1,
-     *p3 = p2 + columns,
-     *p4 = p3 + columns,
-     *p5 = p4 - 1,
-     *p6 = p5 - 1,
-     *p7 = p6 - columns,
-     *center = p7 + 1;
 
-   int *rp = result + columns + 1;
-  // Help variables for rows,cols and center
-	int r,c,cntr;
-	unsigned int value;
-  // Memory allocation
-  memset(result, 0, rows*columns*sizeof(int));
-  // Main cycle
-  for (r=0;r<rows-2;r++)
-  {
-    for (c=0;c<columns-2;c++)
-    {
-      value = 0;
-      cntr = *center - 1;
-      
-      compab_mask_inc(p0,0);
-      compab_mask_inc(p1,1);
-      compab_mask_inc(p2,2);
-      compab_mask_inc(p3,3);
-      compab_mask_inc(p4,4);
-      compab_mask_inc(p5,5);
-      compab_mask_inc(p6,6);
-      compab_mask_inc(p7,7);
-      center++;
-      *rp = value;
-      rp++;
-    }
-    p0 += 2;
-    p1 += 2;
-    p2 += 2;
-    p3 += 2;
-    p4 += 2;
-    p5 += 2;
-    p6 += 2;
-    p7 += 2;
-    center += 2;
-    rp += 2;
-  }
-  
-  return result;
-}
-/* ------------------------------------------------------------------------- */
-
-int * lbp2HistsCxx(int rows, int columns, const int* data, int partRows, int partColumns, int* result)
-{
-  // pointer to center of 32x32 matrix
-  const int *center = data;    
-   
-  // Help variables for rows,cols
-  int r,c;
-  // Memory allocation
-  int cr = (rows)/partRows;
-  int cc = (columns)/partColumns;
-  memset(result, 0, cr*cc*256*sizeof(int));
-  // Main cycle
-  for (r=0;r<rows;r++)
-  {
-    int actualR = r/partRows;
-    for (c=0;c<columns;c++)
-    {
-      int actualC = c/partColumns; 
-      //cout << r << " " << c << " " << actualR << " " << actualC << " " << (((actualR*cc)+actualC)*256) + *center << " " << *center << endl;      
-      result[(((actualR*cc)+actualC)*256) + *center]++;
-      //cout << result[(((actualR*cc)+actualC)*256) + *center] << endl;
-      center++;
-    }
-  }
-  
-  return result;
-}
-/* ------------------------------------------------------------------------- */
 #endif
