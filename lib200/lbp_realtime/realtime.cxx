@@ -52,7 +52,7 @@ WINDLLMSG  int* realTimeLbp3x10(int rows, int columns, const int* data,
 WINDLLMSG  int* realTimeLbp4x12(int rows, int columns, const int* data,
   int* result)
 {
-  int* dataOut = realTimeLbp3x12Cxx(rows, columns, data, result);
+  int* dataOut = realTimeLbp4x12Cxx(rows, columns, data, result);
   return dataOut;
 }
 
@@ -61,7 +61,7 @@ WINDLLMSG  int* realTimeLbp4x12(int rows, int columns, const int* data,
 WINDLLMSG  int* uniformLbp(int columns, const int* data,
   int* result)
 {
-  int* dataOut = unifomrLbpCxx(columns, data, result);
+  int* dataOut = uniformLbpCxx(columns, data, result);
   return dataOut;
 }
 
@@ -70,7 +70,7 @@ WINDLLMSG  int* uniformLbp(int columns, const int* data,
 WINDLLMSG  int* rotationMinLbp(int columns, const int* data,
   int* result)
 {
-  int* dataOut = rotationMinCxx(columns, data, result);
+  int* dataOut = rotationMinLbpCxx(columns, data, result);
   return dataOut;
 }
 

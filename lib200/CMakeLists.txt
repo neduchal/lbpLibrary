@@ -21,7 +21,11 @@ include_directories("${PROJECT_BINARY_DIR}")
 
 # Option Build LbpLibrary ITK Realtime
 option (LBPLIB_BUILD_REALTIME
-        "Build Realtime LbpLibrary" ON) 
+        "Build Realtime LbpLibrary" ON)
+
+# Option Build LbpLibrary ITK Realtime
+option (LBPLIB_BUILD_3D
+        "Build Realtime LbpLibrary" ON)          
 
 # Option Build LbpLibrary ITK Support
 option (LBPLIB_BUILD_ITK 
@@ -37,7 +41,7 @@ option (LBPLIB_BUILD_EIGEN
         
 # Option Build Queetech database engine
 option (LBPLIB_BUILD_DB 
-        "Build LbpLibrary Texture database engine" ON) 
+        "Build LbpLibrary Texture database engine" OFF) 
         
 # Option Add Boost support 
 option (LBPLIB_ADD_BOOST
@@ -48,6 +52,12 @@ if(LBPLIB_BUILD_REALTIME)
 	add_subdirectory(lbp_realtime)
 	message("Realtime modul byl bez problemu nakonfigurovan.")
 ENDIF(LBPLIB_BUILD_REALTIME)   
+
+# Build Realtime LbpLibrary
+if(LBPLIB_BUILD_3D)  
+	add_subdirectory(lbp_3d)
+	message("3D modul byl bez problemu nakonfigurovan.")
+ENDIF(LBPLIB_BUILD_3D)   
 
 # Build LbpLibrary Texture database engine
 if(LBPLIB_BUILD_DB)  
