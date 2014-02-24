@@ -1,49 +1,29 @@
 lbpLibrary
 ==========
-
-* Popis instalace (na linuxu) nové verze je uveden ve wiki na stránce LbpLibrary 2.0.0.
+* NEW VERSION 2.0.0 COMMING SOON. 
+* THIS TUESDAY THE ALPHA VERSION WILL BE RELEASED
+* NEW INSTALL NOTES COMMING SOON. 
 
 Required Dependencies
 ---------------------
+* C/C++ Compiler 
 
-* ITK version 3.x.x - recommended instalation example
+* Cmake
 
-  Download :  http://www.itk.org/ITK/resources/software.html   
-  Unzip : C:/projects/itk         
-  Cmake : C:/projects/itk/bin cmake or cmake-gui (win/lin)  (option : Build shared libraries)  
-  Make : C:/projects/itk/bin/ sudo make install (lin)  or build in MSVC (win) 
+* Python ( NumPy )
 
-* Python
 
-* Matlab (This version does not support Octave)
-
-(note : C:/projects/itk  - this is only sample path to the projects folder.)
-
-Installation Guide Ubuntu 12.04 
+Installation Guide UNIX (TESTED ON LINUX MINT 15 XFCE)
 -------------------------------
 
-ITK
 
-sudo apt-get install cmake insighttoolkit3-examples libinsighttoolkit3-dev libgdcm2-dev
 
 Installation Guide Windows 7 
 -------------------------------
-Download last version of lbpLibrary   
-Unzip libxxx (for example lib100 ) folder to C:/projects/lbp   
-Cmake : C:/projects/lbp/bin   
-MSVC : Build library  
+
 
 Using library
 -------------
-
-* Matlab
-Use files in Matlab folder in your build and lbp.dll dynamic library.
-
-* Python
-Use files in Python folder in your build and lbp.dll dynamic library.
-
-* C++
-Use only headers and cxx files in source of lbpLibrary. In zip-file there are two sample applications computeLBP and compare.Lbp
 
 
 
