@@ -39,8 +39,8 @@ Folder LbpLibrary will be created in project folder.
 
 	LbpLibrary ---> python ---> python scripts
 	            |
-	            --> shared ---> debug ---> debugshared libraries (.dll) 
-	            						or  release ---> release shared libs.
+	            --> shared ---> debug ---> debug shared libraries (.dll) 
+	            	        or  release ---> release shared libs.
 
 
 
