@@ -18,8 +18,12 @@ Installation Guide LINUX DIST. (TESTED : MINT 15)
 	or
 	
 	Download zip of this repository
+	
+Go to source folder in dev or stable (will be added with first stable version).
 
-Create project in cmake gui and run this command in project folder :
+	For example dev/LbpLibrary_2_0_0_a01/
+
+Create project by cmake and run this command in binary project folder :
 	
 	sudo make install
 	
@@ -33,7 +37,7 @@ Installation Guide Windows 7
 -------------------------------
 	Download ZIP of this repository
 	
-Create project in cmake gui and compile it in Visual Studio.
+Create project by cmake gui and compile it in Visual Studio.
 
 Folder LbpLibrary will be created in project folder. 
 
