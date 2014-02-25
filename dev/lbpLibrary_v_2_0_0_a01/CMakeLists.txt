@@ -2,7 +2,7 @@
 ## 
 ## author : Ing. Petr Neduchal
 ## version : 2.0.0. ALPHA 01 
-## last update : 24.2.2014
+## last update : 25.2.2014
 
 cmake_minimum_required(VERSION 2.8)
 
@@ -16,6 +16,9 @@ set (QUEETECH_LbpLibrary_VERSION_MAJOR 2)
 set (QUEETECH_LbpLibrary_VERSION_MINOR 0)
 set (QUEETECH_LbpLibrary_VERSION_PATCH 0)
 set (QUEETECH_LbpLibrary_VERSION_STRING ${QUEETECH_LbpLibrary_VERSION_MAJOR}.${QUEETECH_LbpLibrary_VERSION_MINOR}.${QUEETECH_LbpLibrary_VERSION_PATCH})
+
+
+message("PROJECT QUEETECH LbpLibrary ${QUEETECH_LbpLibrary_VERSION_STRING}")
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/lbp_constants.h.in"
