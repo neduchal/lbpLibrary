@@ -32,7 +32,7 @@ def lbp1x8(lbplib, npIM) :
             img[(w*i) + j] = npIM[i,j]
     lbplib.lbp(w,h,ctypes.byref(img), ctypes.byref(res))
     res2 = zeros([1, 256], dtype = np.int32)
-    for i in range(256)
+    for i in range(256):
       res2[i] = res[i]
     return res2
 
@@ -52,7 +52,7 @@ def lbp2x8(lbplib, npIM) :
             img[(w*i) + j] = npIM[i,j]
     lbplib.lbp2x8(w,h,ctypes.byref(img), ctypes.byref(res))
     res2 = zeros([1, 256], dtype = np.int32)
-    for i in range(256)
+    for i in range(256):
       res2[i] = res[i]
     return res2
 
@@ -72,7 +72,7 @@ def realTimeLbp3x10(lbplib, npIM) :
             img[(w*i) + j] = npIM[i,j]
     lbplib.lbp3x10(w,h,ctypes.byref(img), ctypes.byref(res))
     res2 = zeros([1, 1024], dtype = np.int32)
-    for i in range(1024)
+    for i in range(1024):
       res2[i] = res[i]
     return res2
 
@@ -92,6 +92,6 @@ def lbp4x12(lbplib, npIM) :
             img[(w*i) + j] = npIM[i,j]
     lbplib.realTimeLbp3x10(w,h,ctypes.byref(img), ctypes.byref(res))
     res2 = zeros([1, 4096], dtype = np.int32)
-    for i in range(4096)
+    for i in range(4096):
       res2[i] = res[i]
     return res2

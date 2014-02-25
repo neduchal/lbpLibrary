@@ -159,7 +159,7 @@ def lbp3d(lbplib, npIM, N, mask, radius):
 					img[(r*c*i) + (c*j) + k] = npIM[i,j,k]
 		lbplib.lpb3d(r,c,s, ctypes.byref(maskPoints), ctypes.byref(maskCoef), N, mask['center'], radius, ctypes.byref(img), ctypes.byref(res))
 		res2 = zeros([1, np.pow(2,N)], dtype = np.int32)
-		for i in range(np.pow(2,N))
+		for i in range(np.pow(2,N)):
 			res2[i] = res[i]
     return res2
 

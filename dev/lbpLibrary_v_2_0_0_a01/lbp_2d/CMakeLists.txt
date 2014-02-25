@@ -19,15 +19,16 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     SET(DYNLIB "libLbpLibrary.so")
 		# Instalace sdilene knihovny
 	  install(TARGETS LbpLibrary DESTINATION /lib)  
-		install(TARGETS LbpLibrary DESTINATION ${PROJECT_BINARY_DIR}/LbpLibrary/shared)  	  
+
 ELSEIF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     SET(DYNLIB "LbpLibrary.dll")
 
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 set_target_properties(LbpLibrary PROPERTIES
-                      RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BINARY_DIR}/LbpLibrary/shared/debug
-                      RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BINARY_DIR}/LbpLibrary/shared/release
+											LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/LbpLibrary/shared
+                      LIBRARY_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BINARY_DIR}/LbpLibrary/shared/debug
+                      LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BINARY_DIR}/LbpLibrary/shared/release
 )  
  
 # Konfigurace python wrapperu

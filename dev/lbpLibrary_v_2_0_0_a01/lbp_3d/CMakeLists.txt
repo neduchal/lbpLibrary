@@ -15,14 +15,15 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     SET(DYNLIB libLbpLibrary3d.so)
 		# Instalace sdilene knihovny
 	  install(TARGETS  LbpLibrary3d DESTINATION /lib)
-		install(TARGETS LbpLibrary3d DESTINATION ${PROJECT_BINARY_DIR}/LbpLibrary/shared)  		  
+		#install(TARGETS LbpLibrary3d.so DESTINATION ${PROJECT_BINARY_DIR}/LbpLibrary/shared)
 ELSE(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     SET(DYNLIB LbpLibrary3d.dll)
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux") 
 
 set_target_properties(LbpLibrary3d PROPERTIES
-                      RUNTIME_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BINARY_DIR}/LbpLibrary/shared/debug
-                      RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BINARY_DIR}/LbpLibrary/shared/release
+											LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/LbpLibrary/shared
+                      LIBRARY_OUTPUT_DIRECTORY_DEBUG ${PROJECT_BINARY_DIR}/LbpLibrary/shared/debug
+                      LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PROJECT_BINARY_DIR}/LbpLibrary/shared/release
 )
  
 # Konfigurace python wrapperu
