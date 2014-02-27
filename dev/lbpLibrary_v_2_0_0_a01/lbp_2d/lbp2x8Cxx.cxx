@@ -36,7 +36,7 @@ int * lbp2x8Cxx(int rows, int columns, const int* data, int* result)
      *p02 = p01 + 1,
      *p03 = p02 + columns,
      *p04 = p03 - 1,
-     *p1 = p01 + 1,
+     *p1 = p01 + 2,
 		 *p21 = p1 + 1, 
      *p22 = p21 + 1,
      *p23 = p22 + columns,

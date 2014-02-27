@@ -37,18 +37,28 @@ option (BUILD_MAIN_MODULE
 option (BUILD_3D_MODULE
         "Build Realtime LbpLibrary" ON)          
         
+# Option Build LbpLibrary Tests
+option (BUILD_TESTS
+        "Build tests" ON)            
+        
 ###############################################################################
 
-# Build Realtime LbpLibrary
+# Build Main Module
 if(BUILD_MAIN_MODULE)  
 	add_subdirectory(lbp_2d)
 	message("Main module was successfully configured.")
 ENDIF(BUILD_MAIN_MODULE)   
 
-# Build Realtime LbpLibrary
+# Build 3D Module
 if(BUILD_3D_MODULE)  
 	add_subdirectory(lbp_3d)
 	message("3D Module was successfully configured.")
-ENDIF(BUILD_3D_MODULE)                           
+ENDIF(BUILD_3D_MODULE)  
+
+# Build Tests
+if(BUILD_TESTS)  
+	add_subdirectory(tests)
+	message("TESTS was successfully configured.")
+ENDIF(BUILD_TESTS)                            
 
 				 

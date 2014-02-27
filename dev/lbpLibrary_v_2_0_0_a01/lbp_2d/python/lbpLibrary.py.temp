@@ -30,8 +30,8 @@ def lbp1x8(lbplib, npIM) :
     for i in range(w) :
         for j in range(h) :
             img[(w*i) + j] = npIM[i,j]
-    lbplib.lbp(w,h,ctypes.byref(img), ctypes.byref(res))
-    res2 = zeros([1, 256], dtype = np.int32)
+    lbplib.lbpCxx(w,h,ctypes.byref(img), ctypes.byref(res))
+    res2 = np.zeros([256, 1], dtype = np.int32)    
     for i in range(256):
       res2[i] = res[i]
     return res2
@@ -50,14 +50,14 @@ def lbp2x8(lbplib, npIM) :
     for i in range(w) :
         for j in range(h) :
             img[(w*i) + j] = npIM[i,j]
-    lbplib.lbp2x8(w,h,ctypes.byref(img), ctypes.byref(res))
-    res2 = zeros([1, 256], dtype = np.int32)
+    lbplib.lbp2x8Cxx(w,h,ctypes.byref(img), ctypes.byref(res))
+    res2 = np.zeros([256, 1], dtype = np.int32)  
     for i in range(256):
       res2[i] = res[i]
     return res2
 
 # LBP radius 3, points 10 algorithm
-def realTimeLbp3x10(lbplib, npIM) :
+def lbp3x10(lbplib, npIM) :
     """Function calls extern function realTimeLbpImNp
 
 	Params : lbplib - library pointer (see loadLbpLibrary)
@@ -70,8 +70,8 @@ def realTimeLbp3x10(lbplib, npIM) :
     for i in range(w) :
         for j in range(h) :
             img[(w*i) + j] = npIM[i,j]
-    lbplib.lbp3x10(w,h,ctypes.byref(img), ctypes.byref(res))
-    res2 = zeros([1, 1024], dtype = np.int32)
+    lbplib.lbp3x10Cxx(w,h,ctypes.byref(img), ctypes.byref(res))
+    res2 = np.zeros([1024, 1], dtype = np.int32)  
     for i in range(1024):
       res2[i] = res[i]
     return res2
@@ -90,8 +90,8 @@ def lbp4x12(lbplib, npIM) :
     for i in range(w) :
         for j in range(h) :
             img[(w*i) + j] = npIM[i,j]
-    lbplib.realTimeLbp3x10(w,h,ctypes.byref(img), ctypes.byref(res))
-    res2 = zeros([1, 4096], dtype = np.int32)
+    lbplib.lbp4x12Cxx(w,h,ctypes.byref(img), ctypes.byref(res))
+    res2 = np.zeros([4096, 1], dtype = np.int32)  
     for i in range(4096):
       res2[i] = res[i]
     return res2

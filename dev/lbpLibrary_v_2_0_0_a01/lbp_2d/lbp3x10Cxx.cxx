@@ -89,18 +89,18 @@ int * lbp3x10Cxx(int rows, int columns, const int* data, int* result)
 
 			// TODO : zkontrolovat na zaklade nakresu
       cntr = *center - 1;
-      compab_mask_inc_diag2(p04, p03, p02, p01, 1)
-      compab_mask_inc_diag2(p13, p14, p11, p12, 2)
-      compab_mask_inc_diag(p23, p24, p21, p22, 3)
-      compab_mask_inc(p3,4);
-      compab_mask_inc_diag(p42, p43, p44, p41, 5)
-      compab_mask_inc_diag2(p52, p53, p54, p51, 6)
-      compab_mask_inc_diag2(p63, p62, p61, p64, 7)
-      compab_mask_inc_diag(p73, p72, p71, p74, 8)
-      compab_mask_inc(p8,9);
-      compab_mask_inc_diag(p91, p94, p93, p92, 10)
+      compab_mask_inc_diag2(p04, p03, p02, p01, 0)
+      compab_mask_inc_diag2(p13, p14, p11, p12, 1)
+      compab_mask_inc_diag(p23, p24, p21, p22, 2)
+      compab_mask_inc(p3,3);
+      compab_mask_inc_diag(p42, p43, p44, p41, 4)
+      compab_mask_inc_diag2(p52, p53, p54, p51, 5)
+      compab_mask_inc_diag2(p63, p62, p61, p64, 6)
+      compab_mask_inc_diag(p73, p72, p71, p74, 7)
+      compab_mask_inc(p8,8);
+      compab_mask_inc_diag(p91, p94, p93, p92, 9)
       center++;
-      result[value]++;
+      result[value]++;      
     }
 		 p01 += 6;
      p02 += 6;
