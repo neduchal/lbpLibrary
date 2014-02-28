@@ -157,7 +157,7 @@ def lbp3d(lbplib, npIM, N, mask, radius):
 		for i in range(N*8):
 			maskPoints[i] = (int)(maskP[i,0])
 			maskCoef[i] = maskC[i,0]
-		print(r*s*c)
+
 		for i in range(s) :
 			for j in range(r) :
 				for k in range(c) :
