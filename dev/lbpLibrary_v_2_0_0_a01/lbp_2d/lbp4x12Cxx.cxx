@@ -83,7 +83,6 @@ int * lbp4x12Cxx(int rows, int columns, const int* data, int* result)
       compab_mask_inc_diag(p111, p112, 11)
       center++;
       result[value]++;
-      std::cout << value;
     }
 		 p01 += 8;
      p02 += 8;

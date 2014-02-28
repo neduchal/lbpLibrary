@@ -32,30 +32,43 @@ int* uniformLbpCxx(int columns, const int* data, int* result)
   // Cyklus pocitajici uniform patterns vzory          
   for(int i = 0; i < columns; i++)
   {
-    int value = *p0;	
-    unsigned int unif = 0;
-    char change = 0;
-    char help = value % 2;
-
-    while(i>1)
+  	int value = i;	
+    unsigned int unif = i;
+    int change = 0;
+    int help = ((value ) & 1);
+    
+		int help2 = 0;
+    
+    for(int j = 1; j < 32; j++)   
     {
-      value /= 2;
-      char value2 = i%2 ;
-      if(help != value2) 
-      {
-        help = value2; 
-        change++;
-        if(change > 2) 
-        {
-          unif = 0;        
-          break;
-        }
-      }
+      if(*p0 == 0) {break;}
+    	int help2 = ((value) & (unsigned int)pow(2,j)) >> j;   
+    	if(help != help2)
+    	{    	
+    		help = help2;
+    		change++;
+    	} 
+    	   	
     }
+    
+    help = ((value ) & 1);
+   	if(help != help2)
+   	{    	
+   		help = help2;
+   		change++;
+   	}     
+    
+    if(change != 2)
+    {
+   			result[0] += *p0;   			
+				p0++; 
+    		continue;	
+    }
+    
 		result[unif] += *p0;
-		p0++;
-  } 
-
+		p0++;  
+	}  
+    
   return result;
 }
 
@@ -69,11 +82,17 @@ int* rotationMinLbpCxx(int columns, const int* data, int* result)
 	for(int i = 0; i < columns; i++)
   {
 		int value = *p0;	
+		if(value == 0) 
+		{
+			p0++;
+			continue;
+		
+		}
 		unsigned int minimum = (unsigned int)(pow(2.0,32)-1);
 
     for(int j = 0; j < 32; j++)
     {
-      unsigned int help = (value<<j | value>>(32-j));
+      unsigned int help = (i<<j | i>>(32-j));
       if(help < minimum) minimum = help;          
     }
     

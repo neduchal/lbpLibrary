@@ -59,7 +59,7 @@ int * lbp3x10Cxx(int rows, int columns, const int* data, int* result)
      *p52 = p51 + columns,
      *p53 = p52 - 1, 
      *p54 = p53 - columns,
-		 *p61 = p54 - 1,
+		 *p61 = p54,
      *p62 = p61 + columns,
      *p63 = p62 - 1, 
      *p64 = p63 - columns,
