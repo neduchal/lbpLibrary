@@ -22,7 +22,7 @@ def initPoints(N, c):
 	distance = 2*r;
 	points = np.zeros([N,4], dtype = np.double)
 	points[0,:] = [0,0,1,0]
-	
+	print(points)
 	for i in range(6) :
 		helpPoint =  points[0,0:3] + [np.cos((i)*np.pi/3)*distance,np.sin((i)*np.pi/3)*distance,0]
 		helpPoint = helpPoint/np.linalg.norm(helpPoint) 
@@ -36,7 +36,7 @@ def initPoints(N, c):
 		points[i+1,0:3] = points[0,0:3] + helpPoint2*distance
 		points[i+1,0:3] = points[i+1,0:3]/np.linalg.norm(points[i+1,0:3])
 		points[i+1,3] = helpPoint[2]
-		
+
 	ind = 7
 	i = 1
 	while (ind < N):
@@ -73,7 +73,7 @@ def initPoints(N, c):
 		i = i+1;
 		
 	points2 = points[:,0:3]
-	points = points2		
+	points = points2	
 	return points
 	
 def spherePoints(N, sphereSize, iterations, c, initType):
@@ -92,7 +92,7 @@ def spherePoints(N, sphereSize, iterations, c, initType):
 			actualdist = np.zeros([N,1], dtype = np.double);
 			for k in range(N):
 				if j == k:
-					actualdist[k] = 1000
+					actualdist[k] = 1000000
 					continue
 				actualdist[k] = np.linalg.norm(points[j,:] - points[k,:]);         
 			minindex = np.argmin(actualdist);
@@ -106,6 +106,7 @@ def spherePoints(N, sphereSize, iterations, c, initType):
 			normp = np.linalg.norm(points[j,:]);
 			points[j,:] = points[j,:]/normp;        
 	points = points*sphereSize;
+	print(points)		
 	return points
 	
 def maskGenerator(N, width, height, sphereRadius, iterations, c, initType):
@@ -145,8 +146,6 @@ def lbp3d(lbplib, npIM, N, mask, radius):
 		s = npIM.shape[0]
 		r = npIM.shape[1]
 		c = npIM.shape[2]    
-		print(s)
-		print('\n\n\n')
 		img = (ctypes.c_long * (r*c*s))()
 		res = (ctypes.c_long * (int)(math.pow(2,N)))()
 		maskPoints = (ctypes.c_long * (N * 8))()
@@ -157,7 +156,7 @@ def lbp3d(lbplib, npIM, N, mask, radius):
 		for i in range(N*8):
 			maskPoints[i] = (int)(maskP[i,0])
 			maskCoef[i] = maskC[i,0]
-
+		print(r*s*c)
 		for i in range(s) :
 			for j in range(r) :
 				for k in range(c) :
