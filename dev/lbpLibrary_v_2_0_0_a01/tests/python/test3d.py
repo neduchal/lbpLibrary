@@ -1,9 +1,16 @@
 #! /usr/bin/python
 # -*- coding: utf-8 -*-
 
+import os
+import sys
+
+path_to_script = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(path_to_script, "../"))
+
 import numpy as np
 import unittest
 import lbpLibrary3d
+from utils import *
 
 class TestLbp3d(unittest.TestCase):
 	def setUp(self):
@@ -16,16 +23,18 @@ class TestLbp3d(unittest.TestCase):
 		self.assert_(libLbp is not None)
 		
 	def test_02lbp3D(self):
-		libLbp = lbpLibrary3d.loadLbp3DLibrary()	
-		im = self.data[0:5,0:5,0:5]
+		mask = {}
+		im = self.data
 		im[:,:,:] = 2
-		im[2,2,2] = 1
-		mask = lbpLibrary3d.maskGenerator(24, 3, 3, 2, 50, 0.5, 1)
-		res = lbpLibrary3d.lbp3d(libLbp, im, 24, mask, 2)
+		libLbp = lbpLibrary3d.loadLbp3DLibrary()	
+		im[3:6,3:6,3:6] = 1
+		maskJSON = inout.readMask('../../masks/mask3D_8.json')
+		mask['mask'] = maskJSON['mask']['points']
+		mask['maskCoef'] = maskJSON['mask']['coefs']
+		mask['center'] = maskJSON['mask']['center']
+		res = lbpLibrary3d.lbp3d(libLbp, im, maskJSON['mask']['pointsNum'], mask, maskJSON['mask']['size'][0])
 		print('\nTEST 3D LBP\n')
-		print(mask['mask'])
-		print(np.argmax(res))
-		assert(np.argmax(res) == 1)											
+		assert(np.argmax(res) == 255)											
 		pass
 
 		

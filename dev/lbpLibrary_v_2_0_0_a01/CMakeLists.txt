@@ -39,7 +39,15 @@ option (BUILD_3D_MODULE
         
 # Option Build LbpLibrary Tests
 option (BUILD_TESTS
-        "Build tests" ON)            
+        "Build tests" ON)       
+
+# Option Build LbpLibrary Python Utils
+option (BUILD_PYTHON_UTILS
+        "Build python utils" ON)   
+
+# Option Build LbpLibrary MAsks
+option (BUILD_MASKS
+        "Build python utils" ON)   
         
 ###############################################################################
 
@@ -59,6 +67,19 @@ ENDIF(BUILD_3D_MODULE)
 if(BUILD_TESTS)  
 	add_subdirectory(tests)
 	message("TESTS was successfully configured.")
-ENDIF(BUILD_TESTS)                            
+ENDIF(BUILD_TESTS)   
+
+# Build Python utils
+if(BUILD_PYTHON_UTILS)  
+	FILE(COPY python_utils/  DESTINATION ${PROJECT_BINARY_DIR}/LbpLibrary/python/utils/)
+	message("Python utils was successfully configured.")
+ENDIF(BUILD_PYTHON_UTILS)  
+
+# Build Tests
+if(BUILD_MASKS)  
+	FILE(COPY masks/  DESTINATION ${PROJECT_BINARY_DIR}/LbpLibrary/masks/)
+	message("Masks was successfully configured.")
+ENDIF(BUILD_MASKS)                            
+                         
 
 				 

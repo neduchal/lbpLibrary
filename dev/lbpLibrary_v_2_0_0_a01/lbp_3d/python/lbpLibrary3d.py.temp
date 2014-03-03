@@ -123,6 +123,7 @@ def maskGenerator(N, width, height, sphereRadius, iterations, c, initType):
 		y = [temp[1]-0.5, temp[1]+0.5];
 		z = [temp[2]-0.5, temp[2]+0.5];
 		m = 0;
+		print [x,y,z]
 		for j in range(2):
 			for k in range(2):
 				for l in range(2):
@@ -154,9 +155,8 @@ def lbp3d(lbplib, npIM, N, mask, radius):
 		maskC = mask['maskCoef']
 
 		for i in range(N*8):
-			maskPoints[i] = (int)(maskP[i,0])
-			maskCoef[i] = maskC[i,0]
-		print(r*s*c)
+			maskPoints[i] = (int)(maskP[i])
+			maskCoef[i] = maskC[i]
 		for i in range(s) :
 			for j in range(r) :
 				for k in range(c) :
