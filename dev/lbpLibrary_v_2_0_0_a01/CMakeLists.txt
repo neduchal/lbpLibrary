@@ -43,7 +43,11 @@ option (BUILD_TESTS
 
 # Option Build LbpLibrary Python Utils
 option (BUILD_PYTHON_UTILS
-        "Build python utils" ON)   
+        "Build python utils" ON)  
+        
+# Option Build LbpLibrary Octave Utils
+option (BUILD_OCTAVE_UTILS
+        "Build octave utils" ON)            
 
 # Option Build LbpLibrary MAsks
 option (BUILD_MASKS
@@ -74,6 +78,12 @@ if(BUILD_PYTHON_UTILS)
 	FILE(COPY python_utils/  DESTINATION ${PROJECT_BINARY_DIR}/LbpLibrary/python/utils/)
 	message("Python utils was successfully configured.")
 ENDIF(BUILD_PYTHON_UTILS)  
+
+# Build Python utils
+if(BUILD_OCTAVE_UTILS)  
+	FILE(COPY octave_utils/  DESTINATION ${PROJECT_BINARY_DIR}/LbpLibrary/octave/utils/)
+	message("Octave utils was successfully configured.")
+ENDIF(BUILD_OCTAVE_UTILS) 
 
 # Build Tests
 if(BUILD_MASKS)  
