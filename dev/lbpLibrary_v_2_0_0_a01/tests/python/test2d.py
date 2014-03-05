@@ -4,6 +4,14 @@
 
 import numpy as np
 import unittest
+
+import os
+import sys
+
+path_to_script = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(path_to_script, "../"))
+
+
 import lbpLibrary
 
 
