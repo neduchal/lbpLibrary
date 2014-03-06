@@ -1,0 +1,127 @@
+"""@package LBP 2D wrapper
+
+ Author : Ing. Petr Neduchal
+"""
+
+# IMPORT PACKAGES
+import numpy as np
+import ctypes
+
+# Library loading function
+def loadLbpLibrary() :
+    """Function loadLbpLibrary() loads LBP library ${DYNLIB}
+
+			 Return : Library object for calling library functions
+    """
+    lbplib = ctypes.cdll.LoadLibrary("${DYNLIB}")
+    return lbplib
+ 
+# LBP radius 1, points 8 algorithm
+def lbp1x8(lbplib, npIM) :
+    """Function calls extern function realTimeLbpImNp
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 npIM - NumPy matrix
+    """
+    w = npIM.shape[0]
+    h = npIM.shape[1]
+    img = (ctypes.c_long * (w*h))()
+    res = (ctypes.c_long * 256)()
+    for i in range(h) :
+        for j in range(w) :
+            img[(w*i) + j] = npIM[i,j]
+    lbplib.lbpCxx(w,h,ctypes.byref(img), ctypes.byref(res))
+    res2 = np.zeros([256, 1], dtype = np.int32)    
+    for i in range(256):
+      res2[i] = res[i]
+    return res2
+
+# LBP radius 2, points 8 algorithm
+def lbp2x8(lbplib, npIM) :
+    """Function calls extern function realTimeLbpImNp
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 npIM - NumPy matrix
+    """
+    h = npIM.shape[0]
+    w = npIM.shape[1]
+    img = (ctypes.c_long * (w*h))()
+    res = (ctypes.c_long * 256)()
+    for i in range(h) :
+        for j in range(w) :
+            img[(w*i) + j] = npIM[i,j]
+    lbplib.lbp2x8Cxx(w,h,ctypes.byref(img), ctypes.byref(res))
+    res2 = np.zeros([256, 1], dtype = np.int32)  
+    for i in range(256):
+      res2[i] = res[i]
+    return res2
+
+# LBP radius 3, points 10 algorithm
+def lbp3x10(lbplib, npIM) :
+    """Function calls extern function realTimeLbpImNp
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 npIM - NumPy matrix
+    """
+    h = npIM.shape[0]
+    w = npIM.shape[1]
+    img = (ctypes.c_long * (w*h))()
+    res = (ctypes.c_long * 1024)()
+    for i in range(h) :
+        for j in range(w) :
+            img[(w*i) + j] = npIM[i,j]
+    lbplib.lbp3x10Cxx(w,h,ctypes.byref(img), ctypes.byref(res))
+    res2 = np.zeros([1024, 1], dtype = np.int32)  
+    for i in range(1024):
+      res2[i] = res[i]
+    return res2
+
+# LBP radius 4, points 12 algorithm
+def lbp4x12(lbplib, npIM) :
+    """Function calls extern function realTimeLbpImNp
+
+	Params : lbplib - library pointer (see loadLbpLibrary)
+                 npIM - NumPy matrix
+    """
+    h = npIM.shape[0]
+    w = npIM.shape[1]
+    img = (ctypes.c_long * (w*h))()
+    res = (ctypes.c_long * 4096)()
+    for i in range(h) :
+        for j in range(w) :
+            img[(w*i) + j] = npIM[i,j]
+    lbplib.lbp4x12Cxx(w,h,ctypes.byref(img), ctypes.byref(res))
+    res2 = np.zeros([4096, 1], dtype = np.int32)  
+    for i in range(4096):
+      res2[i] = res[i]
+    return res2
+    
+def uniformLbp(lbplib, npArr):
+	length = npArr.shape[0]
+	hist = (ctypes.c_long * (length))()
+	histUni = (ctypes.c_long * (length))()	
+	for i in range(length) :
+		hist[i] = npArr[i]
+	lbplib.uniformLbpCxx(length, ctypes.byref(hist), ctypes.byref(histUni))	
+	res = np.zeros([length, 1], dtype = np.int32)  
+	for i in range(length) :
+		res[i] = histUni[i]
+	return res
+	
+def rotationMinLbp(lbplib, npArr):
+	length = npArr.shape[0]
+	hist = (ctypes.c_long * (length))()
+	histUni = (ctypes.c_long * (length))()	
+	for i in range(length) :
+		hist[i] = npArr[i]
+	lbplib.rotationMinLbpCxx(length, ctypes.byref(hist), ctypes.byref(histUni))	
+	res = np.zeros([length, 1], dtype = np.int32)  
+	for i in range(length) :
+		res[i] = histUni[i]
+	return res	
+	
+	
+	
+	
+	
+
