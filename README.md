@@ -1,6 +1,6 @@
 LbpLibrary
 ==========
-* VERSION 2.0.0 ALPHA 01 RELEASED. 
+* VERSION 2.0.0 BETA 01 RELEASED. 
 
 Required Dependencies
 ---------------------
@@ -8,8 +8,7 @@ Required Dependencies
 
 * Cmake
 
-* Python ( NumPy )
-
+* Python ( NumPy, ctypes )
 
 Installation Guide LINUX DIST. (TESTED : MINT 15)
 -------------------------------
