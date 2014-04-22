@@ -3,10 +3,10 @@ close all
 clc 
 
 % Mask settings
-width = 9;
-height = 9;
-N = 8; % Number of points
-sphereSize = 4; % radius of sphere
+width = 512;
+height = 512;
+N = 26; % Number of points
+sphereSize = 10; % radius of sphere
 offset = sphereSize; 
 iteration = 500;
 c = 0.5; % Coeficient (IF N GROWS -> c FALLS)
@@ -51,4 +51,4 @@ end
 center = (((2*sphereSize+1)*(2*sphereSize+1)*(2*sphereSize+1))/2)+0.5;
  
 % SAVING MASK
-saveMaskToJSON('3D', [4,4,4], N, mask , maskCoef, center, 'mask3D_8.json')
+saveMaskToJSON('3D', [sphereSize,sphereSize,sphereSize], N, p, mask , maskCoef, center, ['mask3D_', int2str(N), '_' , int2str(floor(sphereSize)),'.json'])
