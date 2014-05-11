@@ -25,6 +25,11 @@ configure_file (
   "${PROJECT_BINARY_DIR}/lbp_constants.h"
   )
 
+configure_file (
+  "${PROJECT_SOURCE_DIR}/setup.py.in"
+  "${PROJECT_BINARY_DIR}/setup.py"
+  )
+
 include_directories("${PROJECT_BINARY_DIR}")
 
 ###############################################################################
