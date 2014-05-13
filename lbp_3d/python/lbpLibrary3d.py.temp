@@ -135,7 +135,7 @@ def maskGenerator(N, width, height, sphereRadius, iterations, c, initType):
 	points['maskCoef'] = maskCoef
 	return points
 	
-def loadLbp3DLibrary() :
+def loadLibrary() :
     """Function loads LBP library
 
 			 RealtimeLbp.dll/libRealtimeLbp.so (win/lin)
