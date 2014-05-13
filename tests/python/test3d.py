@@ -32,7 +32,7 @@ class TestLbp3d(unittest.TestCase):
 		mask['mask'] = maskJSON['mask']['points']
 		mask['maskCoef'] = maskJSON['mask']['coefs']
 		mask['center'] = maskJSON['mask']['center']
-		res = lbpLibrary3d.lbp3d(libLbp, im, maskJSON['mask']['pointsNum'], mask, maskJSON['mask']['size'][0])
+		res = lbpLibrary3d.compute(libLbp, im, maskJSON['mask']['pointsNum'], mask, maskJSON['mask']['size'][0])
 		print('\nTEST 3D LBP\n')
 		assert(np.argmax(res) == 255)											
 		pass
