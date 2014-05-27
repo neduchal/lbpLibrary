@@ -42,7 +42,7 @@ def compute(lbplib, npIM, N, mask, radius):
 				for k in range(c) :
 					img[(r*c*i) + (c*j) + k] = npIM[i,j,k]
 		lbplib.lbp3dCxx(r,c,s, ctypes.byref(maskPoints), ctypes.byref(maskCoef), N, (int)(mask['center']), radius, ctypes.byref(img), ctypes.byref(res))
-		res2 = np.zeros([(int)(math.pow(2,N)), 1], dtype = np.int32)
+		res2 = np.zeros((int)(math.pow(2,N)))
 		for i in range((int)(math.pow(2,N))):
 			res2[i] = res[i]
 		return res2
