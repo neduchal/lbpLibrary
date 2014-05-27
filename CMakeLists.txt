@@ -1,8 +1,8 @@
 ## QUEETECH LBP LIBRARY - MAIN CMAKE FILE 
 ## 
 ## author : Ing. Petr Neduchal
-## version : 2.0.0. ALPHA 01 
-## last update : 25.2.2014
+## version : 2.0.0. BETA
+## last update : 27.5.2014
 
 cmake_minimum_required(VERSION 2.8)
 
@@ -40,7 +40,11 @@ option (BUILD_MAIN_MODULE
 
 # Option Build LbpLibrary 3D MODULE
 option (BUILD_3D_MODULE
-        "Build Realtime LbpLibrary" ON)          
+        "Build 3D Module LbpLibrary" ON)        
+        
+# Option Build LbpLibrary 3D MODULE
+option (BUILD_EXTEND_MODULE
+        "Build Extend Module LbpLibrary" OFF)       
         
 # Option Build LbpLibrary Tests
 option (BUILD_TESTS
@@ -71,6 +75,12 @@ if(BUILD_3D_MODULE)
 	add_subdirectory(lbp_3d)
 	message("3D Module was successfully configured.")
 ENDIF(BUILD_3D_MODULE)  
+
+# Build EXTEND Module
+if(BUILD_EXTEND_MODULE)  
+	add_subdirectory(lbp_extend)
+	message("Extend Module was successfully configured.")
+ENDIF(BUILD_EXTEND_MODULE)  
 
 # Build Tests
 if(BUILD_TESTS)  

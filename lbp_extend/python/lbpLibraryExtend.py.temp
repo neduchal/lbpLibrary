@@ -1,0 +1,47 @@
+"""@package LBP Extended wrapper
+
+ Author : Ing. Petr Neduchal
+"""
+
+# IMPORT PACKAGES
+import numpy as np
+import ctypes
+
+# Library loading function
+def loadLibrary() :
+    """Function loadLibrary() loads LBP library ${DYNLIB}
+
+			 Return : Library object for calling library functions
+    """
+    lbplib = ctypes.cdll.LoadLibrary("${DYNLIB}")
+    return lbplib
+    
+def uniformLbp(lbplib, npArr):
+	length = npArr.shape[0]
+	hist = (ctypes.c_long * (length))()
+	histUni = (ctypes.c_long * (length))()	
+	for i in range(length) :
+		hist[i] = npArr[i]
+	lbplib.uniformLbpCxx(length, ctypes.byref(hist), ctypes.byref(histUni))	
+	res = np.zeros([length, 1], dtype = np.int32)  
+	for i in range(length) :
+		res[i] = histUni[i]
+	return res
+	
+def rotationMinLbp(lbplib, npArr):
+	length = npArr.shape[0]
+	hist = (ctypes.c_long * (length))()
+	histUni = (ctypes.c_long * (length))()	
+	for i in range(length) :
+		hist[i] = npArr[i]
+	lbplib.rotationMinLbpCxx(length, ctypes.byref(hist), ctypes.byref(histUni))	
+	res = np.zeros([length, 1], dtype = np.int32)  
+	for i in range(length) :
+		res[i] = histUni[i]
+	return res	
+	
+	
+	
+	
+	
+
