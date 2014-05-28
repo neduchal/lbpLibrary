@@ -4,7 +4,9 @@ LbpLibrary
 ![logo projektu](http://neduchal.cz/images/lbp200_logo.png)
 
 
-* VERSION 2.0.0 BETA RELEASED. 
+* VERSION 2.0.0 RC1 RELEASED. 
+* BIG CHANGES IN THIS VERSION
+
 
 Required Dependencies
 ---------------------
