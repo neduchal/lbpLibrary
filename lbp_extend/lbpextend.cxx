@@ -11,8 +11,8 @@
    ------------------------------------------------------------------------- */
 
 /* Necessary headers */  
-#include "specialCxx.hpp"
-#include "lbp.hpp"
+#include "extendCxx.hpp"
+#include "lbpextend.hpp"
 
 /* ------------------------------------------------------------------------- */
 

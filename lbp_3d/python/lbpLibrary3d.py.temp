@@ -15,7 +15,7 @@ import math
 import ctypes
 import scipy
 
-def loadLibrary() :
+def load() :
     """Function loads LBP library
 
 			 RealtimeLbp.dll/libRealtimeLbp.so (win/lin)

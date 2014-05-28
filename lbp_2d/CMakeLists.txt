@@ -32,7 +32,7 @@ set_target_properties(LbpLibrary PROPERTIES
 )  
  
 # Konfigurace python wrapperu
-CONFIGURE_FILE(python/lbpLibrary.py.temp  ${PROJECT_BINARY_DIR}/LbpLibrary/python/lbpLibrary.py ${DYNLIB})
+CONFIGURE_FILE(python/lbpLibrary.py.temp  ${PROJECT_BINARY_DIR}/LbpLibrary/python/lbp/lbp2d.py ${DYNLIB})
 
 
 				 

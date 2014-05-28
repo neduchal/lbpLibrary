@@ -29,6 +29,12 @@ configure_file (
   "${PROJECT_SOURCE_DIR}/setup.py.in"
   "${PROJECT_BINARY_DIR}/setup.py"
   )
+  
+configure_file (
+  "${PROJECT_SOURCE_DIR}/__init__.py.temp"
+  "${PROJECT_BINARY_DIR}/LbpLibrary/python/lbp/__init__.py"
+  )
+    
 
 include_directories("${PROJECT_BINARY_DIR}")
 

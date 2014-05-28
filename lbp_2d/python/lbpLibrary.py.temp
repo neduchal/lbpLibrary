@@ -7,9 +7,9 @@
 import numpy as np
 import ctypes
 
-# Library loading function
-def loadLibrary() :
-    """Function loadLbpLibrary() loads LBP library ${DYNLIB}
+# Load Function 
+def load() :
+    """Function load() loads LBP library ${DYNLIB}
 
 			 Return : Library object for calling library functions
     """
@@ -96,30 +96,6 @@ def lbp4x12(lbplib, npIM) :
       res2[i] = res[i]
     return res2
     
-def uniformLbp(lbplib, npArr):
-	length = npArr.shape[0]
-	hist = (ctypes.c_long * (length))()
-	histUni = (ctypes.c_long * (length))()	
-	for i in range(length) :
-		hist[i] = npArr[i]
-	lbplib.uniformLbpCxx(length, ctypes.byref(hist), ctypes.byref(histUni))	
-	res = np.zeros([length, 1], dtype = np.int32)  
-	for i in range(length) :
-		res[i] = histUni[i]
-	return res
-	
-def rotationMinLbp(lbplib, npArr):
-	length = npArr.shape[0]
-	hist = (ctypes.c_long * (length))()
-	histUni = (ctypes.c_long * (length))()	
-	for i in range(length) :
-		hist[i] = npArr[i]
-	lbplib.rotationMinLbpCxx(length, ctypes.byref(hist), ctypes.byref(histUni))	
-	res = np.zeros([length, 1], dtype = np.int32)  
-	for i in range(length) :
-		res[i] = histUni[i]
-	return res	
-	
 	
 	
 	

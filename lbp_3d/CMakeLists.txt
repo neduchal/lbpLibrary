@@ -27,7 +27,7 @@ set_target_properties(LbpLibrary3d PROPERTIES
 )
  
 # Konfigurace python wrapperu
-CONFIGURE_FILE(python/lbpLibrary3d.py.temp  ${PROJECT_BINARY_DIR}/LbpLibrary/python/lbpLibrary3d.py ${DYNLIB})
+CONFIGURE_FILE(python/lbpLibrary3d.py.temp  ${PROJECT_BINARY_DIR}/LbpLibrary/python/lbp/lbp3d.py ${DYNLIB})
 
 
 				 

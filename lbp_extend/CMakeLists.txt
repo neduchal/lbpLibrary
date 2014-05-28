@@ -5,7 +5,7 @@
 
 cmake_minimum_required(VERSION 2.8)
 
-ADD_LIBRARY(LbpLibraryExtend SHARED lbpexntend.cxx lbpextend.hpp 						
+ADD_LIBRARY(LbpLibraryExtend SHARED lbpextend.cxx lbpextend.hpp 						
 							 extendCxx.cxx extendCxx.hpp
               )
               
@@ -14,7 +14,7 @@ TARGET_LINK_LIBRARIES(LbpLibraryExtend ${Libraries} )
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     SET(DYNLIB "libLbpLibraryExtend.so")
 		# Instalace sdilene knihovny
-	  install(TARGETS LbpLibrary DESTINATION /lib)  
+	  install(TARGETS LbpLibraryExtend DESTINATION /lib)  
 
 ELSEIF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     SET(DYNLIB "LbpLibraryExtend.dll")
@@ -28,7 +28,7 @@ set_target_properties(LbpLibraryExtend PROPERTIES
 )  
  
 # Konfigurace python wrapperu
-CONFIGURE_FILE(python/lbpLibraryExtend.py.temp  ${PROJECT_BINARY_DIR}/LbpLibrary/python/lbpLibraryExtend.py ${DYNLIB})
+CONFIGURE_FILE(python/lbpLibraryExtend.py.temp  ${PROJECT_BINARY_DIR}/LbpLibrary/python/lbp/extend.py ${DYNLIB})
 
 
 				 

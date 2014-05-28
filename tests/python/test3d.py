@@ -9,7 +9,7 @@ sys.path.append(os.path.join(path_to_script, "../"))
 
 import numpy as np
 import unittest
-import lbpLibrary3d
+from lbp import *
 from utils import *
 
 class TestLbp3d(unittest.TestCase):
@@ -19,14 +19,14 @@ class TestLbp3d(unittest.TestCase):
 
 	def test_01loadLibrary(self):
 		print('\nTEST Load LbpLibrary3D \n')	
-		libLbp = lbpLibrary3d.loadLibrary()
+		libLbp = lbp3d.load()
 		self.assert_(libLbp is not None)
 		
 	def test_02lbp3D(self):
 		mask = {}
 		im = self.data
 		im[:,:,:] = 2
-		libLbp = lbpLibrary3d.loadLibrary()	
+		libLbp = lbp3d.load()
 		im[3:6,3:6,3:6] = 1
 		maskJSON = inout.readMask('../../masks/mask3D_8_4_9x9.json')
 		mask['mask'] = maskJSON['mask']['points']

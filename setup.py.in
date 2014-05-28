@@ -4,6 +4,6 @@ setup(
         name='lbpLibrary',
         version='${PACKAGE_VERSION}',
         package_dir={ '': '${PROJECT_BINARY_DIR}'+"/LbpLibrary/python/" },
-        #packages=['skelet3d']
-        py_modules=['lbpLibrary', 'lbpLibrary3d']
+        packages=['lbp'],
+        py_modules=['lbp2d', 'lbp3d','extend']
     )
