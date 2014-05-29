@@ -5,8 +5,7 @@ LbpLibrary
 
 
 * VERSION 2.0.0 RC1 RELEASED. 
-* BIG CHANGES IN THIS VERSION
-
+* BIG CHANGES IN NEXT VERSION
 
 Required Dependencies
 ---------------------
