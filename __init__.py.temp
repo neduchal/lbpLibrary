@@ -1,1 +1,1 @@
-__all__ = ["2d", "3d", "extend"]
+__all__ = ["lbp2d", "lbp3d", "extend"]

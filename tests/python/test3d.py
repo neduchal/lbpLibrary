@@ -7,10 +7,10 @@ import sys
 path_to_script = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(path_to_script, "../"))
 
+import json
 import numpy as np
 import unittest
 from lbp import *
-from utils import *
 
 class TestLbp3d(unittest.TestCase):
 	def setUp(self):
@@ -28,11 +28,11 @@ class TestLbp3d(unittest.TestCase):
 		im[:,:,:] = 2
 		libLbp = lbp3d.load()
 		im[3:6,3:6,3:6] = 1
-		maskJSON = inout.readMask('../../masks/mask3D_8_4_9x9.json')
-		mask['mask'] = maskJSON['mask']['points']
-		mask['maskCoef'] = maskJSON['mask']['coefs']
-		mask['center'] = maskJSON['mask']['center']
-		res = lbpLibrary3d.compute(libLbp, im, maskJSON['mask']['pointsNum'], mask, maskJSON['mask']['size'][0])
+		f = open('../../masks/mask3D_8_4.json', 'r')
+		maskJSON = json.load(f)
+		mask = maskJSON['mask']
+		lbp3d.coordToPoints(mask, 9, 9)
+		res = lbp3d.compute(libLbp, im, mask['pointsNum'], mask, mask['size'][0])
 		print('\nTEST 3D LBP\n')
 		assert(np.argmax(res) == 255)											
 		pass

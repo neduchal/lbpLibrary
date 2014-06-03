@@ -32,7 +32,7 @@ def compute(lbplib, npIM, N, mask, radius):
 		maskPoints = (ctypes.c_long * (N * 8))()
 		maskCoef = (ctypes.c_double * (N * 8))()  
 		maskP = mask['mask'] 
-		maskC = mask['maskCoef']
+		maskC = mask['coefs']
 
 		for i in range(N*8):
 			maskPoints[i] = (int)(maskP[i])
@@ -46,7 +46,7 @@ def compute(lbplib, npIM, N, mask, radius):
 		for i in range((int)(math.pow(2,N))):
 			res2[i] = res[i]
 		return res2
-		
+"""		
 def coordToPoints(coordx, coordy,coordz, width, height):
 		points = np.zeros([len(coordx)*8,1], dtype = np.uint32)
 		for i in range(len(coordx)):
@@ -70,6 +70,33 @@ def coordToPoints(coordx, coordy,coordz, width, height):
 						points[(i)*8 + m] = round(x[j]-0.5) + round(y[k]-0.5)*width + round(z[l]-0.5)*width*height; 					
 						m = m + 1;
 		return points		
+"""    
+def coordToPoints(mask, width, height):
+		coordx = mask['coordx']
+		coordy = mask['coordy']
+		coordz = mask['coordz']
+		points = np.zeros([len(coordx)*8,1], dtype = np.uint32)
+		for i in range(len(coordx)):
+			tempx = round(coordx[i])
+			tempy = round(coordy[i])
+			tempz = round(coordz[i])
+		
+			x = [tempx-0.5, tempx+0.5]
+			y = [tempy-0.5, tempy+0.5]
+			z = [tempz-0.5, tempz+0.5]
+			if z[0] < 0:
+				z[0] = 0.1
+			if x[0] < 0:
+				x[0] = 0.1
+			if y[0] < 0:
+				y[0] = 0.1			
+			m = 0;
+			for j in range(2):
+				for k in range(2):
+					for l in range(2):
+						points[(i)*8 + m] = round(x[j]-0.5) + round(y[k]-0.5)*width + round(z[l]-0.5)*width*height; 					
+						m = m + 1;
+		mask['mask'] = points
 
 
 	
