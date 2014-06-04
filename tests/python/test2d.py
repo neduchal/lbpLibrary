@@ -26,12 +26,12 @@ class TestLbp2d(unittest.TestCase):
 		self.assert_(libLbp is not None)
 		
 	def test_02lbp_1x8(self):
-		libLbp = lbpLibrary.loadLibrary()	
+		libLbp = lbp2d.load()
 		im = self.img[0:3,0:3]
 		im[1,1] = 1		
 		print('\nTEST LBP 1x8\n')
 		im[0,0] = 2		
-		res = lbpLibrary.lbp1x8(libLbp, im);
+		res = lbp2d.lbp1x8(libLbp, im);
 		assert(np.argmax(res) == 1)
 		im[0,1] = 2													
 		pass
@@ -42,7 +42,7 @@ class TestLbp2d(unittest.TestCase):
 		im[2,2] = 1		
 		print('\nTEST LBP 2x8\n')
 		im[0:2,0:2] = 2
-		res = lbpLibrary.lbp2x8(libLbp, im);
+		res = lbp2d.lbp2x8(libLbp, im);
 		assert(np.argmax(res) == 1)												
 		pass
 			
@@ -52,7 +52,7 @@ class TestLbp2d(unittest.TestCase):
 		im[3,3] = 1	
 		print('\nTEST LBP 3x10\n')
 		im[0:2,2:4] = 2
-		res = lbpLibrary.lbp3x10(libLbp, im);
+		res = lbp2d.lbp3x10(libLbp, im);
 		assert(np.argmax(res) == 3)												
 		pass
 			
@@ -62,35 +62,9 @@ class TestLbp2d(unittest.TestCase):
 		im[4,4] = 1		
 		print('\nTEST LBP 4x12\n')		
 		im[0:2,2:3] = 2
-		res = lbpLibrary.lbp4x12(libLbp, im);
+		res = lbp2d.lbp4x12(libLbp, im);
 		assert(np.argmax(res) == 1)	
-		pass
-			
-	def test_06uniformLbp(self):
-		print('\nTEST Uniform Lbp Algorithm\n')			
-		libLbp = lbp2d.load()
-		hist = np.zeros([10,1], dtype = np.int32)
-		hist[1] = 1 		
-		hist[3] = 1 
-		hist[5] = 1		
-		res = lbpLibrary.uniformLbp(libLbp, hist)
-		assert(res[0] == 1)	
-		assert(res[1] == 1)		
-		assert(res[3] == 1)				
-		pass
-			
-	def test_07rotationMinLbp(self):
-		print('\nTEST Rotation Minimum Lbp Algorithm\n')			
-		libLbp = lbp2d.load()
-		hist = np.zeros([10,1], dtype = np.int32)
-		hist[1] = 1 		
-		hist[4] = 1 
-		hist[6] = 1		
-		res = lbpLibrary.rotationMinLbp(libLbp, hist)
-		assert(res[1] == 2)		
-		assert(res[3] == 1)				
-		pass	
-		pass
+		pass    
 		
 if __name__ == '__main__':
     unittest.main()
