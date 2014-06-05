@@ -94,7 +94,6 @@ void lbp3dCxx(int rows, int columns, int slides, int* mask, const double* maskCo
 		}
     center += (radius*2)*columns;
   }
-  std::cout << result[127]; 
   //return result;
 }
 /* ------------------------------------------------------------------------- */

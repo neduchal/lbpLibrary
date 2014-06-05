@@ -1,3 +1,7 @@
+#! /usr/bin/python
+# -*- coding: utf-8 -*-
+
+
 """@package LBP Extended wrapper
 
  Author : Ing. Petr Neduchal
@@ -18,8 +22,8 @@ def load() :
     
 def uniformLbp(lbplib, npArr):
 	length = npArr.shape[0]
-	hist = (ctypes.c_long * (length))()
-	histUni = (ctypes.c_long * (length))()	
+	hist = (ctypes.c_int32 * (length))()
+	histUni = (ctypes.c_int32 * (length))()	
 	for i in range(length) :
 		hist[i] = npArr[i]
 	lbplib.uniformLbpCxx(length, ctypes.byref(hist), ctypes.byref(histUni))	
@@ -30,8 +34,8 @@ def uniformLbp(lbplib, npArr):
 	
 def rotationMinLbp(lbplib, npArr):
 	length = npArr.shape[0]
-	hist = (ctypes.c_long * (length))()
-	histUni = (ctypes.c_long * (length))()	
+	hist = (ctypes.c_int32 * (length))()
+	histUni = (ctypes.c_int32 * (length))()	
 	for i in range(length) :
 		hist[i] = npArr[i]
 	lbplib.rotationMinLbpCxx(length, ctypes.byref(hist), ctypes.byref(histUni))	

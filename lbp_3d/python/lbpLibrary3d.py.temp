@@ -42,13 +42,12 @@ def compute(lbplib, data, mask):
 		s = data.shape[0]
 		r = data.shape[1]
 		c = data.shape[2]    
-		img = (ctypes.c_long * (r*c*s))()
-		res = (ctypes.c_long * (int)(math.pow(2,N)))()
-		maskPoints = (ctypes.c_long * (N * 8))()
+		img = (ctypes.c_int32 * (r*c*s))()
+		res = (ctypes.c_int32 * (int)(math.pow(2,N)))()
+		maskPoints = (ctypes.c_int32 * (N * 8))()
 		maskCoef = (ctypes.c_double * (N * 8))()  
 		maskP = mask['mask'] 
 		maskC = mask['coefs']
-		print res[127]
 		for i in range(N*8):
 			maskPoints[i] = (int)(maskP[i])
 			maskCoef[i] = maskC[i]

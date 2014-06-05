@@ -1,7 +1,12 @@
+#! /usr/bin/python
+# -*- coding: utf-8 -*-
+
+
 """@package LBP 2D wrapper
 
  Author : Ing. Petr Neduchal
 """
+
 
 # IMPORT PACKAGES
 import numpy as np
@@ -25,8 +30,8 @@ def lbp1x8(lbplib, npIM) :
     """
     w = npIM.shape[0]
     h = npIM.shape[1]
-    img = (ctypes.c_long * (w*h))()
-    res = (ctypes.c_long * 256)()
+    img = (ctypes.c_int32 * (w*h))()
+    res = (ctypes.c_int32 * 256)()
     for i in range(h) :
         for j in range(w) :
             img[(w*i) + j] = npIM[i,j]
@@ -45,8 +50,8 @@ def lbp2x8(lbplib, npIM) :
     """
     h = npIM.shape[0]
     w = npIM.shape[1]
-    img = (ctypes.c_long * (w*h))()
-    res = (ctypes.c_long * 256)()
+    img = (ctypes.c_int32 * (w*h))()
+    res = (ctypes.c_int32 * 256)()
     for i in range(h) :
         for j in range(w) :
             img[(w*i) + j] = npIM[i,j]
@@ -65,8 +70,8 @@ def lbp3x10(lbplib, npIM) :
     """
     h = npIM.shape[0]
     w = npIM.shape[1]
-    img = (ctypes.c_long * (w*h))()
-    res = (ctypes.c_long * 1024)()
+    img = (ctypes.c_int32 * (w*h))()
+    res = (ctypes.c_int32 * 1024)()
     for i in range(h) :
         for j in range(w) :
             img[(w*i) + j] = npIM[i,j]
@@ -85,8 +90,8 @@ def lbp4x12(lbplib, npIM) :
     """
     h = npIM.shape[0]
     w = npIM.shape[1]
-    img = (ctypes.c_long * (w*h))()
-    res = (ctypes.c_long * 4096)()
+    img = (ctypes.c_int32 * (w*h))()
+    res = (ctypes.c_int32 * 4096)()
     for i in range(h) :
         for j in range(w) :
             img[(w*i) + j] = npIM[i,j]

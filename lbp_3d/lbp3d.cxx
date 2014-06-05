@@ -22,7 +22,7 @@ WINDLLMSG  int * lbp3d(int rows, int columns, int slides, int* mask, const doubl
 {
   //int* dataOut = lbp3dCxx(rows, columns, slides, mask, maskCoef, pointsNum, centerPos, radius, data, result);
 
- // return dataOut;
+  //return dataOut;
 }
 
 #endif
