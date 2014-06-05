@@ -44,7 +44,7 @@ using namespace std;
 			* data - input data
 			*result - output data 
 */
-int * lbp3dCxx(int rows, int columns, int slides, int* mask, const double* maskCoef, const int pointsNum, const int centerPos, const int radius, int* data, int* result)
+void lbp3dCxx(int rows, int columns, int slides, int* mask, const double* maskCoef, const int pointsNum, const int centerPos, const int radius, int* data, int* result)
 {
 
 	int *p0 = data;
@@ -69,6 +69,7 @@ int * lbp3dCxx(int rows, int columns, int slides, int* mask, const double* maskC
     {
 			for (c=0;c < columns - (radius*2); c++)
 			{
+   
       	value = 0;
       	cntr = *center - 1;
 				for(int i = 0; i < pointsNum;i++)
@@ -76,7 +77,8 @@ int * lbp3dCxx(int rows, int columns, int slides, int* mask, const double* maskC
 					compab_mask_inc(*pointers[(i)*8], *pointers[(i)*8+1], *pointers[(i)*8+2], *pointers[(i)*8+3], *pointers[(i)*8+4], *pointers[(i)*8+5], *pointers[(i)*8+6], *pointers[(i)*8+7], maskCoef[i*8], maskCoef[i*8+1], maskCoef[i*8+2], maskCoef[i*8+3], maskCoef[i*8+4], maskCoef[i*8+5], maskCoef[i*8+6], maskCoef[i*8+7], i);
 				}
       	center++;
-      	result[value]++;
+      	result[value]++; 
+
 			}
 
 			for(int i = 0; i < pointsNum * 8; i++)
@@ -92,8 +94,8 @@ int * lbp3dCxx(int rows, int columns, int slides, int* mask, const double* maskC
 		}
     center += (radius*2)*columns;
   }
-  
-  return result;
+  std::cout << result[127]; 
+  //return result;
 }
 /* ------------------------------------------------------------------------- */
 #endif

@@ -26,6 +26,6 @@
 #ifdef __cplusplus
   extern "C"
 #endif
-int* lbp3dCxx(int rows, int columns, int slides, int* mask, const double* maskCoef, const int pointsNum, const int centerPos, const int radius, int* data, int* result);
+void lbp3dCxx(int rows, int columns, int slides, int* mask, const double* maskCoef, const int pointsNum, const int centerPos, const int radius, int* data, int* result);
 
 #endif

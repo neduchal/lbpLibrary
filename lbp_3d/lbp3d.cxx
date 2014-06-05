@@ -14,13 +14,15 @@
 /* Necessary headers */  
 #include "lbp3d.hpp"
 #include "lbp3dCxx.hpp"
+#include <iostream>
 
 /* ------------------------------------------------------------------------- */
 
 WINDLLMSG  int * lbp3d(int rows, int columns, int slides, int* mask, const double* maskCoef, const int pointsNum, const int centerPos, const int radius, int* data, int* result)
 {
-  int* dataOut = lbp3dCxx(rows, columns, slides, mask, maskCoef, pointsNum, centerPos, radius, data, result);
-  return dataOut;
+  //int* dataOut = lbp3dCxx(rows, columns, slides, mask, maskCoef, pointsNum, centerPos, radius, data, result);
+
+ // return dataOut;
 }
 
 #endif

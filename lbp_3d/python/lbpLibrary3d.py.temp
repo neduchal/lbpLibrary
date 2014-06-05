@@ -48,7 +48,7 @@ def compute(lbplib, data, mask):
 		maskCoef = (ctypes.c_double * (N * 8))()  
 		maskP = mask['mask'] 
 		maskC = mask['coefs']
-
+		print res[127]
 		for i in range(N*8):
 			maskPoints[i] = (int)(maskP[i])
 			maskCoef[i] = maskC[i]
