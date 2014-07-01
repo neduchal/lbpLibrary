@@ -28,13 +28,13 @@ Installation Guide LINUX DIST. (TESTED : MINT 15)
 
 Create build folder. For example 
 
-	mkdir /home/user/projects/build/lbpLibrary
+	mkdir ~/projects/build/lbpLibrary
 	
 Create project and compile whole library :
 	
-	cd /home/user/projects/build/lbpLibrary
+	cd ~/projects/build/lbpLibrary
 	
-	cmake /home/user/projects/git/lbpLibrary
+	cmake ~/projects/git/lbpLibrary
 	
 	sudo make install
 	
@@ -44,13 +44,13 @@ Now, the library is installed in system. You can try this code :
 
 	python
 	
-	import lbpLibrary 
+	from lbp import * 
 	
-	lbpLibrary
+	lbp2d
 	
 You should get something like this :
 
-	<module 'lbpLibrary' from '/usr/local/lib/python2.7/dist-packages/lbpLibrary.pyc'>
+	<module 'lbp2d' from '/usr/local/lib/python2.7/dist-packages/lbp2d.pyc'>
 
 	
 Folder LbpLibrary will be created in build folder. There are few tests and there will be some examples to.
