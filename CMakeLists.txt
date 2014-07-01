@@ -50,7 +50,7 @@ option (BUILD_3D_MODULE
         
 # Option Build LbpLibrary 3D MODULE
 option (BUILD_EXTEND_MODULE
-        "Build Extend Module LbpLibrary" OFF)       
+        "Build Extend Module LbpLibrary" ON)       
         
 # Option Build LbpLibrary Tests
 option (BUILD_TESTS
