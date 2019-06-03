@@ -28,8 +28,8 @@ def lbp1x8(lbplib, npIM) :
 	Params : lbplib - library pointer (see loadLbpLibrary)
                  npIM - NumPy matrix
     """
-    w = npIM.shape[0]
-    h = npIM.shape[1]
+    h = npIM.shape[0]
+    w = npIM.shape[1]
     img = (ctypes.c_int32 * (w*h))()
     res = (ctypes.c_int32 * 256)()
     for i in range(h) :
